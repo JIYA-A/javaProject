@@ -5,8 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class MovieDAO {
+
+
+public class CustomerDAO {
 	private Connection conn;
 	private PreparedStatement pst;
 	private ResultSet rs;
@@ -55,6 +58,9 @@ public class MovieDAO {
 		}
 
 	}
+	
+	//연락처 추가하는 기능
+	
 
 
 }

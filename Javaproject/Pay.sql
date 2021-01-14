@@ -10,4 +10,9 @@ seatUid number
 alter table pay add constraint pay_seatUid_fk
 foreign key (seatUid) references seat (seatUid);
 
+alter table pay 
+modify (payDate date); 
+
+alter table pay add cardNumber varchar2(40) null;
+
 create sequence pay_UId start with 1 increment by 1;
