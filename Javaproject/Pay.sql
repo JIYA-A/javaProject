@@ -9,3 +9,5 @@ seatUid number
 
 alter table pay add constraint pay_seatUid_fk
 foreign key (seatUid) references seat (seatUid);
+
+create sequence pay_UId start with 1 increment by 1;
