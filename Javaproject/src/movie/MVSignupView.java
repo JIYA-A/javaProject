@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 
-public class MVSignup {
+public class MVSignupView {
 
 	private JFrame frame;
 	private JTextField textField;
@@ -23,7 +23,7 @@ public class MVSignup {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MVSignup window = new MVSignup();
+					MVSignupView window = new MVSignupView();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +32,7 @@ public class MVSignup {
 		});
 	}
 
-	public MVSignup() {
+	public MVSignupView() {
 		initialize();
 	}
 

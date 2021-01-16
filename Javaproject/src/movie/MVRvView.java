@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 
-public class MVReservation {
+public class MVRvView {
 
 	private JFrame frame;
 
@@ -18,7 +18,7 @@ public class MVReservation {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MVReservation window = new MVReservation();
+					MVRvView window = new MVRvView();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -28,7 +28,7 @@ public class MVReservation {
 	}
 
 
-	public MVReservation() {
+	public MVRvView() {
 		initialize();
 	}
 
