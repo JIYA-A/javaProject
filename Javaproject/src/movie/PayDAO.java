@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SestDAO {
+public class PayDAO {
 	private Connection conn;
 	private PreparedStatement pst;
 	private ResultSet rs;
