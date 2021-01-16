@@ -8,20 +8,19 @@ public class PayVO {
 	private String payDate;
 	private int userUid;
 	private int seatUid;
-	
-	public PayVO(int patUid, String patMethod, int totalPrice, String payDate, int userUid, int seatUid) {
+	public PayVO(int payUid, String payMethod, int totalPrice, String payDate, int userUid, int seatUid) {
 		super();
-		this.payUid = patUid;
-		this.payMethod = patMethod;
+		this.payUid = payUid;
+		this.payMethod = payMethod;
 		this.totalPrice = totalPrice;
 		this.payDate = payDate;
 		this.userUid = userUid;
 		this.seatUid = seatUid;
 	}
-	public int getPatUid() {
+	public int getPayUid() {
 		return payUid;
 	}
-	public String getPatMethod() {
+	public String getPayMethod() {
 		return payMethod;
 	}
 	public int getTotalPrice() {
@@ -36,11 +35,11 @@ public class PayVO {
 	public int getSeatUid() {
 		return seatUid;
 	}
-	public void setPatUid(int patUid) {
-		this.payUid = patUid;
+	public void setPayUid(int payUid) {
+		this.payUid = payUid;
 	}
-	public void setPatMethod(String patMethod) {
-		this.payMethod = patMethod;
+	public void setPayMethod(String payMethod) {
+		this.payMethod = payMethod;
 	}
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
@@ -54,5 +53,7 @@ public class PayVO {
 	public void setSeatUid(int seatUid) {
 		this.seatUid = seatUid;
 	}
+	
+	
 	
 }
