@@ -38,7 +38,7 @@ public class MVSignup {
 
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 750, 600);
+		frame.setBounds(100, 100, 586, 565);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
@@ -46,7 +46,7 @@ public class MVSignup {
 		JPanel panel = new JPanel();
 		springLayout.putConstraint(SpringLayout.NORTH, panel, 53, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, panel, 10, SpringLayout.WEST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, panel, 724, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel, 560, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel);
 		
 		JPanel panel_1 = new JPanel();
@@ -59,68 +59,69 @@ public class MVSignup {
 		panel.setLayout(sl_panel);
 		
 		textField = new JTextField();
-		sl_panel.putConstraint(SpringLayout.NORTH, textField, 25, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, textField, -175, SpringLayout.EAST, panel);
+		sl_panel.putConstraint(SpringLayout.NORTH, textField, 23, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, textField, -140, SpringLayout.EAST, panel);
 		panel.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		sl_panel.putConstraint(SpringLayout.SOUTH, textField, -26, SpringLayout.NORTH, textField_1);
-		sl_panel.putConstraint(SpringLayout.NORTH, textField_1, 87, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, textField_1, -175, SpringLayout.EAST, panel);
+		sl_panel.putConstraint(SpringLayout.NORTH, textField_1, 83, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, textField_1, -140, SpringLayout.EAST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, textField, -15, SpringLayout.NORTH, textField_1);
 		panel.add(textField_1);
 		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
 		sl_panel.putConstraint(SpringLayout.NORTH, textField_2, 152, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.WEST, textField_2, 285, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, textField_2, -175, SpringLayout.EAST, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, textField_1, -20, SpringLayout.NORTH, textField_2);
+		sl_panel.putConstraint(SpringLayout.SOUTH, textField_1, -24, SpringLayout.NORTH, textField_2);
+		sl_panel.putConstraint(SpringLayout.EAST, textField_2, 0, SpringLayout.EAST, textField);
+		sl_panel.putConstraint(SpringLayout.WEST, textField_2, 0, SpringLayout.WEST, textField);
 		panel.add(textField_2);
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
-		sl_panel.putConstraint(SpringLayout.SOUTH, textField_2, -28, SpringLayout.NORTH, textField_3);
-		sl_panel.putConstraint(SpringLayout.SOUTH, textField_3, -119, SpringLayout.SOUTH, panel);
-		sl_panel.putConstraint(SpringLayout.NORTH, textField_3, 225, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, textField_3, -175, SpringLayout.EAST, panel);
+		sl_panel.putConstraint(SpringLayout.NORTH, textField_3, 219, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, textField_3, -125, SpringLayout.SOUTH, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, textField_2, -22, SpringLayout.NORTH, textField_3);
+		sl_panel.putConstraint(SpringLayout.WEST, textField_3, 156, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, textField_3, 0, SpringLayout.EAST, textField);
 		panel.add(textField_3);
 		textField_3.setColumns(10);
 		
 		textField_4 = new JTextField();
-		sl_panel.putConstraint(SpringLayout.NORTH, textField_4, 24, SpringLayout.SOUTH, textField_3);
-		sl_panel.putConstraint(SpringLayout.SOUTH, textField_4, -50, SpringLayout.SOUTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, textField_4, -175, SpringLayout.EAST, panel);
+		sl_panel.putConstraint(SpringLayout.NORTH, textField_4, 28, SpringLayout.SOUTH, textField_3);
+		sl_panel.putConstraint(SpringLayout.SOUTH, textField_4, -52, SpringLayout.SOUTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, textField_4, -140, SpringLayout.EAST, panel);
 		panel.add(textField_4);
 		textField_4.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("\uC544\uC774\uB514");
-		sl_panel.putConstraint(SpringLayout.WEST, textField, 85, SpringLayout.EAST, lblNewLabel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel, 0, SpringLayout.SOUTH, textField);
+		sl_panel.putConstraint(SpringLayout.WEST, textField, 55, SpringLayout.EAST, lblNewLabel);
+		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel, 47, SpringLayout.NORTH, panel);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("\uBE44\uBC00\uBC88\uD638");
-		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 37, SpringLayout.SOUTH, lblNewLabel);
+		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel_1, -449, SpringLayout.EAST, panel);
+		sl_panel.putConstraint(SpringLayout.WEST, textField_1, 55, SpringLayout.EAST, lblNewLabel_1);
+		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 99, SpringLayout.NORTH, panel);
 		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel, 0, SpringLayout.EAST, lblNewLabel_1);
-		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel_1, -514, SpringLayout.EAST, panel);
-		sl_panel.putConstraint(SpringLayout.WEST, textField_1, 85, SpringLayout.EAST, lblNewLabel_1);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("\uBE44\uBC00\uBC88\uD638\uD655\uC778");
 		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_2, 15, SpringLayout.NORTH, textField_2);
-		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel_2, -73, SpringLayout.WEST, textField_2);
+		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_2, 0, SpringLayout.WEST, lblNewLabel_1);
 		panel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("\uC774\uB984");
-		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_3, 51, SpringLayout.SOUTH, lblNewLabel_2);
-		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel_3, -525, SpringLayout.EAST, panel);
-		sl_panel.putConstraint(SpringLayout.WEST, textField_3, 96, SpringLayout.EAST, lblNewLabel_3);
+		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_3, 15, SpringLayout.NORTH, textField_3);
+		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_3, 0, SpringLayout.WEST, lblNewLabel);
 		panel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("\uC5F0\uB77D\uCC98");
-		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_4, 59, SpringLayout.SOUTH, lblNewLabel_3);
-		sl_panel.putConstraint(SpringLayout.WEST, textField_4, 97, SpringLayout.EAST, lblNewLabel_4);
-		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_4, 0, SpringLayout.WEST, lblNewLabel_1);
+		sl_panel.putConstraint(SpringLayout.WEST, textField_4, 55, SpringLayout.EAST, lblNewLabel_4);
+		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_4, 15, SpringLayout.NORTH, textField_4);
+		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_4, 65, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel_4, 0, SpringLayout.EAST, lblNewLabel);
 		panel.add(lblNewLabel_4);
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(new GridLayout(1, 0, 0, 0));
@@ -132,10 +133,10 @@ public class MVSignup {
 		panel_1.add(btnNewButton_1);
 		
 		JPanel panel_2 = new JPanel();
-		springLayout.putConstraint(SpringLayout.NORTH, panel_2, 5, SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.WEST, panel_2, 0, SpringLayout.WEST, panel);
-		springLayout.putConstraint(SpringLayout.SOUTH, panel_2, -6, SpringLayout.NORTH, panel);
-		springLayout.putConstraint(SpringLayout.EAST, panel_2, 0, SpringLayout.EAST, panel);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_2, 0, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_2, 0, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_2, -3, SpringLayout.NORTH, panel);
+		springLayout.putConstraint(SpringLayout.EAST, panel_2, 0, SpringLayout.EAST, frame.getContentPane());
 		frame.getContentPane().add(panel_2);
 	}
 }
