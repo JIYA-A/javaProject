@@ -150,6 +150,7 @@ public class MVSignupView {
 					dao.addCustomer(new CustomerVO(name, id, pw, phoneNum));
 					JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다.", "", JOptionPane.PLAIN_MESSAGE);
 					new MVRoginView().main(null);
+					frame.dispose();
 					
 					
 				}else {
