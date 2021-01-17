@@ -57,8 +57,8 @@ public class MVRoginView{
 		btn_signup.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				
+				frame.dispose();
+				new MVSignupView().main(null);;
 			}
 		});
 		sl_panel.putConstraint(SpringLayout.SOUTH, btn_signup, -69, SpringLayout.SOUTH, panel);
