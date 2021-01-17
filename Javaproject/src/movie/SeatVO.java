@@ -4,14 +4,14 @@ public class SeatVO {
 
 	private int seatUid;
 	private String seatName;
-	private char isSeatRsv;
-	private int movidUid;
-	public SeatVO(int seatUid, String seatName, char isSeatRsv, int movidUid) {
+	private String isSeatRsv;
+	private int movieUid;
+	public SeatVO(int seatUid, String seatName, String isSeatRsv, int movieUid) {
 		super();
 		this.seatUid = seatUid;
 		this.seatName = seatName;
 		this.isSeatRsv = isSeatRsv;
-		this.movidUid = movidUid;
+		this.movieUid = movieUid;
 	}
 	public int getSeatUid() {
 		return seatUid;
@@ -19,11 +19,11 @@ public class SeatVO {
 	public String getSeatName() {
 		return seatName;
 	}
-	public char getIsSeatRsv() {
+	public String getIsSeatRsv() {
 		return isSeatRsv;
 	}
-	public int getMovidUid() {
-		return movidUid;
+	public int getMovieUid() {
+		return movieUid;
 	}
 	public void setSeatUid(int seatUid) {
 		this.seatUid = seatUid;
@@ -31,11 +31,12 @@ public class SeatVO {
 	public void setSeatName(String seatName) {
 		this.seatName = seatName;
 	}
-	public void setIsSeatRsv(char isSeatRsv) {
+	public void setIsSeatRsv(String isSeatRsv) {
 		this.isSeatRsv = isSeatRsv;
 	}
-	public void setMovidUid(int movidUid) {
-		this.movidUid = movidUid;
+	public void setMovieUid(int movieUid) {
+		this.movieUid = movieUid;
 	}
+	
 	
 }

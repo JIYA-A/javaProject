@@ -7,9 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import movie.PayVO;
-
-public class PayDAO {
+public class SeatDAO {
 	private Connection conn;
 	private PreparedStatement pst;
 	private ResultSet rs;
@@ -59,18 +57,16 @@ public class PayDAO {
 
 	}
 
-	public void addPay(PayVO vo) {
+	public void addSeat(SeatVO vo) {
 
 		connection(); // DB연결
 
-		String sql = "insert into pay values(pay_payUid.nextval,?,?,?,?,?)";
+		String sql = "insert into seat values(seat_seatUid.nextval,?,?,?)";
 		try {
 			pst = conn.prepareStatement(sql);
-			pst.setString(1, vo.getPayMethod());
-			pst.setInt(2, vo.getTotalPrice());
-			pst.setString(3, vo.getPayDate());
-			pst.setInt(4, vo.getUserUid());
-			pst.setInt(5, vo.getSeatUid());
+			pst.setString(1, vo.getSeatName());
+			pst.setString(2, vo.getIsSeatRsv());
+			pst.setInt(3, vo.getMovieUid());
 
 			pst.executeUpdate(); // sql문장 실행
 
@@ -82,8 +78,8 @@ public class PayDAO {
 
 	}// addContact 마지막줄
 
-	public ArrayList<PayVO> selectPayAll() {
-		ArrayList<PayVO> list = new ArrayList<PayVO>();
+	public ArrayList<SeatVO> selectSeatAll() {
+		ArrayList<SeatVO> list = new ArrayList<SeatVO>();
 
 		try {
 			connection();
@@ -98,14 +94,12 @@ public class PayDAO {
 			rs = pst.executeQuery();
 
 			while (rs.next()) {
-				int getPayUid = rs.getInt(1);
-				String getPayMethod = rs.getString(2);
-				int getTotalPrice = rs.getInt(3);
-				String getPayDate = rs.getString(4);
-				int getUserUid = rs.getInt(5);
-				int getSeatUid = rs.getInt(6);
+				int getSeatUid = rs.getInt(1);
+				String getSeatName = rs.getString(2);
+				String getIsSeatRsv = rs.getString(3);
+				int getMovieUid = rs.getInt(5);
 
-				list.add(new PayVO(getPayUid, getPayMethod, getTotalPrice, getPayDate, getUserUid, getSeatUid));
+				list.add(new SeatVO(getSeatUid, getSeatName, getIsSeatRsv, getMovieUid));
 
 			}
 		} catch (SQLException e) {
@@ -121,13 +115,13 @@ public class PayDAO {
 
 	}
 
-	public void deletePay(int selectSeatUid) {
+	public void deleteSeat(int selectSeatUid) {
 		try {
 
 			connection();
 
 			// 3. DB에 보낼 Query문 작성
-			String sql = "delete from pay where seatUid = ?";
+			String sql = "delete from seat where seatUid = ?";
 			pst = conn.prepareStatement(sql);
 			pst.setInt(1, selectSeatUid);
 
@@ -140,5 +134,6 @@ public class PayDAO {
 			close();
 		} // end try~catch!finally
 	}
+
 
 }
