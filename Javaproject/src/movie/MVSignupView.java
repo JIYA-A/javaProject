@@ -9,6 +9,8 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -133,14 +135,31 @@ public class MVSignupView {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//저장하기
+				
+				
 				String id = text_id.getText();
 				String pw = text_pw.getText();
+				String pwCheck = text_pwCheck.getText();
 				String name  = text_name.getText();
 				String phoneNum = text_phoneNum.getText();
+			
+					
+				
+				if (pw.equals(pwCheck)) {
+					CustomerDAO dao = new CustomerDAO();
+					dao.addCustomer(new CustomerVO(name, id, pw, phoneNum));
+					JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다.", "", JOptionPane.PLAIN_MESSAGE);
+					new MVRoginView().main(null);
+					frame.dispose();
+					
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "비밀번호가 다릅니다.", "", JOptionPane.PLAIN_MESSAGE);
+				
+				}
 				
 				
-				CustomerDAO dao = new CustomerDAO();
-				dao.addCustomer(new CustomerVO(name, id, pw, phoneNum));
+				
 				
 				
 			}
@@ -152,8 +171,15 @@ public class MVSignupView {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				new MVRoginView().main(null);
+				 
+		                frame.dispose();
+		            
+
+
 				
 			}
+
+		
 		});
 		panel_1.add(btnNewButton_1);
 		
