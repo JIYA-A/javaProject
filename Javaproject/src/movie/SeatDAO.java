@@ -76,7 +76,7 @@ public class SeatDAO {
 			close(); // DB연결종료
 		}
 
-	}// addContact 마지막줄
+	}
 
 	public ArrayList<SeatVO> selectSeatAll() {
 		ArrayList<SeatVO> list = new ArrayList<SeatVO>();
