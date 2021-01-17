@@ -63,7 +63,7 @@ public class PayDAO {
 
 		connection(); // DB연결
 
-		String sql = "insert into contact values(?,?,?,?,?,?)";
+		String sql = "insert into pay values(?,?,?,?,?,?)";
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setInt(1, vo.getPayUid());
@@ -94,17 +94,20 @@ public class PayDAO {
 			// *BookDAO의 selectBookAll()메소드 참고
 
 			// 3.DB에 보낼 Query 작성
-			String sql = "select * from contact";
+			String sql = "select * from pay";
 			pst = conn.prepareStatement(sql);
 
 			rs = pst.executeQuery();
 
 			while (rs.next()) {
-				String getName = rs.getString(1);
-				int getAge = rs.getInt(2);
-				String getPhone = rs.getString(3);
+				int getPayUid = rs.getInt(1);
+				String getPayMethod = rs.getString(2);
+				int getTotalPrice = rs.getInt(3);
+				String getPayDate = rs.getString(4);
+				int getUserUid = rs.getInt(5);
+				int getSeatUid = rs.getInt(6);
 
-//				list.add(new PayVO());
+				list.add(new PayVO(getPayUid, getPayMethod, getTotalPrice, getPayDate, getUserUid, getSeatUid));
 
 			}
 		} catch (SQLException e) {
@@ -120,15 +123,15 @@ public class PayDAO {
 
 	}
 
-	public void deleteContact(String selectName) {
+	public void deletePay(int selectSeatUid) {
 		try {
 
 			connection();
 
 			// 3. DB에 보낼 Query문 작성
-			String sql = "delete from contact where name = ?";
+			String sql = "delete from pay where seatUid = ?";
 			pst = conn.prepareStatement(sql);
-			pst.setString(1, selectName);
+			pst.setInt(1, selectSeatUid);
 
 			// 4. Query 실행
 			pst.executeUpdate();
