@@ -6,9 +6,9 @@ public class CustomerVO {
 	private String userId; 
 	private String userPw; 
 	private String userPhoneNum;
-	public CustomerVO(int userUid, String userName, String userId, String userPw, String userPhoneNum) {
+	
+	public CustomerVO(String userName, String userId, String userPw, String userPhoneNum) {
 		super();
-		this.userUid = userUid;
 		this.userName = userName;
 		this.userId = userId;
 		this.userPw = userPw;

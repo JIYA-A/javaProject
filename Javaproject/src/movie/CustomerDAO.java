@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 
 
+
+
 public class CustomerDAO {
 	private Connection conn;
 	private PreparedStatement pst;
@@ -59,7 +61,30 @@ public class CustomerDAO {
 
 	}
 	
-	//연락처 추가하는 기능
+	//회원정보 추가하는 기능
+	
+	public void addCustomer(CustomerVO vo) {
+
+		connection();
+
+		String sql = "insert into customer values(user_Uid.nextval,?,?,?,?)";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, vo.getUserName());
+			pst.setString(2, vo.getUserId());
+			pst.setString(3, vo.getUserPw());
+			pst.setString(4, vo.getUserPhoneNum());
+
+			pst.executeUpdate(); // sql문장 실행
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(); // DB연결종료
+		}
+
+	}
+
 	
 
 

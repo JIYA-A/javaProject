@@ -6,3 +6,5 @@ userPw varchar2(80),
 userPhoneNum varchar2(80)
 );
 create sequence user_Uid start with 1 increment by 1;
+
+select * from customer;
