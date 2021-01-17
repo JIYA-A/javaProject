@@ -61,14 +61,6 @@ public class MVSignupView {
 		panel.setLayout(sl_panel);
 		
 		text_id = new JTextField();
-		text_id.addMouseListener(new MouseAdapter() {
-			@Override
-			//저장하기 위한 코드 
-			public void mouseClicked(MouseEvent e) {
-			
-				
-			}
-		});
 		sl_panel.putConstraint(SpringLayout.NORTH, text_id, 23, SpringLayout.NORTH, panel);
 		sl_panel.putConstraint(SpringLayout.EAST, text_id, -140, SpringLayout.EAST, panel);
 		panel.add(text_id);
@@ -156,6 +148,13 @@ public class MVSignupView {
 		panel_1.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("\uB4A4\uB85C\uAC00\uAE30");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new MVRoginView().main(null);
+				
+			}
+		});
 		panel_1.add(btnNewButton_1);
 		
 		JPanel panel_2 = new JPanel();
