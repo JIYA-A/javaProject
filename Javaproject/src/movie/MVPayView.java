@@ -9,11 +9,15 @@ import javax.swing.JButton;
 import java.awt.GridLayout;
 import java.awt.CardLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
@@ -200,6 +204,15 @@ public class MVPayView {
 		panel_1.setLayout(sl_panel_1);
 		
 		JButton btnNewButton = new JButton("\uACB0\uC81C \uD655\uC778");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//클릭 시, 결제완료창을 띄우기
+				JOptionPane.showMessageDialog(null, "결제가 완료되었습니다.", "", JOptionPane.PLAIN_MESSAGE);
+				//예매하기 창으로 돌아가기
+				new MVRvView().main(null);
+			}
+		});
 		sl_panel_1.putConstraint(SpringLayout.NORTH, btnNewButton, 0, SpringLayout.NORTH, panel_1);
 		sl_panel_1.putConstraint(SpringLayout.WEST, btnNewButton, 139, SpringLayout.WEST, panel_1);
 		panel_1.add(btnNewButton);
