@@ -228,7 +228,30 @@ public class MVPayView {
 				//클릭 시, 결제완료창을 띄우기
 				JOptionPane.showMessageDialog(null, "결제가 완료되었습니다.", "", JOptionPane.PLAIN_MESSAGE);
 				//DB저장하기하기기
+				//totalPrice = 
+				String date = time;
 				
+					
+				
+				
+					
+					dao.addPay(vo);
+					
+					new MVRoginView().main(null);
+					frame.dispose();
+					
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "비밀번호가 다릅니다.", "", JOptionPane.PLAIN_MESSAGE);
+				
+				}
+				
+				
+				
+				
+				
+			}
+		});
 				
 				
 				
