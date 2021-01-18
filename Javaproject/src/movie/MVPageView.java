@@ -52,6 +52,7 @@ public class MVPageView {
 		PayDAO dao = new PayDAO();
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 500);
+		frame.setLocationRelativeTo(null);    // 창이 가운데에서 열리게 하는 명령어
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
@@ -123,7 +124,8 @@ public class MVPageView {
 		removeBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				new MVRvView().main(null);
+				frame.dispose();
 			}
 		});
 		sl_panel_1.putConstraint(SpringLayout.SOUTH, removeBtn, -2, SpringLayout.SOUTH, panel_1);
