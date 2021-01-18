@@ -2,14 +2,17 @@ package movie;
 
 public class MyPageVO {
 
-}
+
 private int payUid;
 private String payMethod;
 private int totalPrice;
 private String payDate;
 private int userUid;
 private int seatUid;
-public PayVO(int payUid, String payMethod, int totalPrice, String payDate, int userUid, int seatUid) {
+
+
+
+public MyPageVO(int payUid, String payMethod, int totalPrice, String payDate, int userUid, int seatUid) {
 	super();
 	this.payUid = payUid;
 	this.payMethod = payMethod;
