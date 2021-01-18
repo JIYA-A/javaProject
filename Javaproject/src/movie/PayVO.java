@@ -3,25 +3,37 @@ package movie;
 public class PayVO {
 
 	private int payUid;
-	private String payMethod;
 	private int totalPrice;
 	private String payDate;
-	private int userUid;
-	private int seatUid;
-	public PayVO(int payUid, String payMethod, int totalPrice, String payDate, int userUid, int seatUid) {
+	private String cardNumber;
+	private String movieName;
+	
+	public PayVO(int totalPrice, String cardNumber, String movieName) {
 		super();
-		this.payUid = payUid;
-		this.payMethod = payMethod;
+		this.totalPrice = totalPrice;
+		this.cardNumber = cardNumber;
+		this.movieName = movieName;
+	}
+
+	public PayVO(int totalPrice, String payDate, String cardNumber, String movieName) {
+		super();
 		this.totalPrice = totalPrice;
 		this.payDate = payDate;
-		this.userUid = userUid;
-		this.seatUid = seatUid;
+		this.cardNumber = cardNumber;
+		this.movieName = movieName;
 	}
+	
+	public PayVO(int payUid, int totalPrice, String payDate, String cardNumber, String movieName) {
+		super();
+		this.payUid = payUid;
+		this.totalPrice = totalPrice;
+		this.payDate = payDate;
+		this.cardNumber = cardNumber;
+		this.movieName = movieName;
+	}
+
 	public int getPayUid() {
 		return payUid;
-	}
-	public String getPayMethod() {
-		return payMethod;
 	}
 	public int getTotalPrice() {
 		return totalPrice;
@@ -29,17 +41,14 @@ public class PayVO {
 	public String getPayDate() {
 		return payDate;
 	}
-	public int getUserUid() {
-		return userUid;
+	public String getCardNumber() {
+		return cardNumber;
 	}
-	public int getSeatUid() {
-		return seatUid;
+	public String getMovieName() {
+		return movieName;
 	}
 	public void setPayUid(int payUid) {
 		this.payUid = payUid;
-	}
-	public void setPayMethod(String payMethod) {
-		this.payMethod = payMethod;
 	}
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
@@ -47,13 +56,14 @@ public class PayVO {
 	public void setPayDate(String payDate) {
 		this.payDate = payDate;
 	}
-	public void setUserUid(int userUid) {
-		this.userUid = userUid;
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
 	}
-	public void setSeatUid(int seatUid) {
-		this.seatUid = seatUid;
+	public void setMovieName(String movieName) {
+		this.movieName = movieName;
 	}
-	
 	
 	
 }
+	
+	
