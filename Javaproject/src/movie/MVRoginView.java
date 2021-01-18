@@ -134,10 +134,10 @@ public class MVRoginView{
 		ImageIcon rogin_icon = new ImageIcon("imgs/ti.png");
 		
 		JLabel lblNewLabel = new JLabel(rogin_icon);
-		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel, 88, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel, 91, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel, -33, SpringLayout.NORTH, lbl_ID);
-		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel, -94, SpringLayout.EAST, panel);
+		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel, 95, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel, 0, SpringLayout.WEST, text_password);
+		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel, -24, SpringLayout.NORTH, lbl_ID);
+		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel, 0, SpringLayout.EAST, text_password);
 		panel.add(lblNewLabel);
 		
 		
