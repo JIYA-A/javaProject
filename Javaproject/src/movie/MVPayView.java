@@ -20,6 +20,7 @@ import javax.swing.SwingConstants;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import java.awt.Color;
 
@@ -100,9 +101,10 @@ public class MVPayView {
 		springLayout.putConstraint(SpringLayout.NORTH, par, 210, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, par, 323, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, par, -44, SpringLayout.SOUTH, frame.getContentPane());
-		panel.setLayout(new GridLayout(1, 0, 0, 0));
-
-		JButton btn1 = new JButton("\uACC4\uC88C\uC774\uCCB4");
+		
+		
+		ImageIcon card_icon = new ImageIcon("imgs/ccard.jpg");
+		JButton btn1 = new JButton(new ImageIcon("C:\\Users\\Chosun\\Documents\\\uCE74\uCE74\uC624\uD1A1 \uBC1B\uC740 \uD30C\uC77C\\KakaoTalk_20210119_083401860.png"));
 		btn1.setBackground(Color.WHITE);
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -118,9 +120,24 @@ public class MVPayView {
 
 			}
 		});
+		SpringLayout sl_panel = new SpringLayout();
+		sl_panel.putConstraint(SpringLayout.NORTH, btn1, 0, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.WEST, btn1, 0, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, btn1, 0, SpringLayout.SOUTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, btn1, 147, SpringLayout.WEST, panel);
+		panel.setLayout(sl_panel);
 		panel.add(btn1);
 
-		JButton btn2 = new JButton("\uC2E0\uC6A9/\uCCB4\uD06C\uCE74\uB4DC");
+		JButton btn2 = new JButton("");
+		sl_panel.putConstraint(SpringLayout.NORTH, btn2, 0, SpringLayout.NORTH, btn1);
+		sl_panel.putConstraint(SpringLayout.WEST, btn2, 6, SpringLayout.EAST, btn1);
+		sl_panel.putConstraint(SpringLayout.SOUTH, btn2, 0, SpringLayout.SOUTH, btn1);
+		sl_panel.putConstraint(SpringLayout.EAST, btn2, 0, SpringLayout.EAST, panel);
+		btn2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btn2.setIcon(new ImageIcon("C:\\Users\\Chosun\\Documents\\\uCE74\uCE74\uC624\uD1A1 \uBC1B\uC740 \uD30C\uC77C\\KakaoTalk_20210119_083401681.png"));
 		btn2.setBackground(Color.WHITE);
 		btn2.addMouseListener(new MouseAdapter() {
 			@Override
@@ -261,13 +278,13 @@ public class MVPayView {
 		frame.getContentPane().add(panel_2);
 
 		JPanel panel_3 = new JPanel();
+		springLayout.putConstraint(SpringLayout.WEST, panel_3, 10, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_3, -10, SpringLayout.EAST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.NORTH, panel, 6, SpringLayout.SOUTH, panel_3);
 		panel_3.setBackground(Color.WHITE);
 		springLayout.putConstraint(SpringLayout.NORTH, panel_3, 49, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_3, -267, SpringLayout.SOUTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.NORTH, panel, 17, SpringLayout.SOUTH, panel_3);
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_2, -6, SpringLayout.NORTH, panel_3);
-		springLayout.putConstraint(SpringLayout.WEST, panel_3, 10, SpringLayout.WEST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, panel_3, 0, SpringLayout.EAST, panel);
 		frame.getContentPane().add(panel_3);
 		SpringLayout sl_panel_3 = new SpringLayout();
 		panel_3.setLayout(sl_panel_3);
