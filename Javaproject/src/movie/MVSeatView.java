@@ -111,6 +111,12 @@ public class MVSeatView {
 		
 		//JButton 생성
 		buttons = new JButton[5][6];
+		boolean[][] buttonCheck = new boolean[5][6]; // boolean 타입으로 선언
+		for (int i = 0; i < buttons.length; i++) {
+			for (int j = 0; j < buttons[i].length; j++) {
+				buttonCheck[i][j] = false;  // 초기값으로 모두 false(버튼을 누르지 않은 상태)
+			}	
+		}
 		
 		for (int i = 0; i < buttons.length; i++) {
 			for (int j = 0; j < buttons[i].length; j++) {
@@ -125,21 +131,19 @@ public class MVSeatView {
 					public void mouseClicked(MouseEvent e) {
 						System.out.println(row+","+col);
 						
-//						if(buttons){
-//							buttons[row][col].setIcon(seat_icon);
-//							count--;
-//							System.out.println(count);
-//							num--;
-//						int a = row;
-//						int b = col;
-//						}
-//						buttons[row][col].setIcon(seatrv_icon);
-//						count++;
-//						num++;
-//						System.out.println(count);
+						// type이 boolean이면 앞에 !을 붙이면 해당 값의 반대라는 의미 true면 false, false면 true 일종의 스위치 처럼 작동함
+						buttonCheck[row][col] = !buttonCheck[row][col];
 						
-						
-						
+						System.out.println(buttonCheck[row][col]);
+						if(buttonCheck[row][col]) {
+							//색깔 바꿈 ON
+							buttons[row][col].setIcon(seatrv_icon);
+							count++;
+						}else {
+							//색깔 바꿈 OFF
+							buttons[row][col].setIcon(seat_icon);
+							count--;
+						}						
 					}
 				});
 			}
@@ -232,10 +236,11 @@ public class MVSeatView {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int sum = value1+value2+value3;
-				System.out.println("합계"+sum);
+				System.out.println("count : "+count);
+				System.out.println("합계 : "+sum);
 				totalPrice = value1*10000+value2*8000+value3*5000;
 				if (sum == count) {
-					new MVPayView(movieNm, time, totalPrice);
+					new MVPayView().main(movieNm, time, totalPrice);					
 					frame.dispose();
 				}else if(count>sum){
 					JOptionPane.showMessageDialog(null, "선택한 인원보다 많습니다.", "", JOptionPane.PLAIN_MESSAGE);
@@ -246,8 +251,6 @@ public class MVSeatView {
 //				pay.movieNm = "명량";
 //				pay.time = "08:00";
 //				pay.totalPrice = 12000;
-				
-				
 			}
 		});
 		panel_2.add(btnNewButton_30);

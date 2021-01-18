@@ -49,6 +49,7 @@ public class MVSignupView {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(153, 204, 255));
 		frame.setBounds(100, 100, 412, 650);
+		frame.setLocationRelativeTo(null);    // 창이 가운데에서 열리게 하는 명령어
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
