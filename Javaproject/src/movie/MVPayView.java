@@ -21,6 +21,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
+import java.awt.Color;
 
 public class MVPayView {
 
@@ -77,6 +78,7 @@ public class MVPayView {
 		MovieDAO ad = new MovieDAO();
 
 		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 349, 453);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
@@ -86,9 +88,11 @@ public class MVPayView {
 		cardLayout = new CardLayout();
 
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
 		frame.getContentPane().add(panel);
 
 		JPanel par = new JPanel();
+		par.setBackground(Color.WHITE);
 		springLayout.putConstraint(SpringLayout.WEST, panel, 0, SpringLayout.WEST, par);
 		springLayout.putConstraint(SpringLayout.SOUTH, panel, -6, SpringLayout.NORTH, par);
 		springLayout.putConstraint(SpringLayout.EAST, panel, 0, SpringLayout.EAST, par);
@@ -98,6 +102,7 @@ public class MVPayView {
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 
 		JButton btn1 = new JButton("\uACC4\uC88C\uC774\uCCB4");
+		btn1.setBackground(Color.WHITE);
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -115,6 +120,7 @@ public class MVPayView {
 		panel.add(btn1);
 
 		JButton btn2 = new JButton("\uC2E0\uC6A9/\uCCB4\uD06C\uCE74\uB4DC");
+		btn2.setBackground(Color.WHITE);
 		btn2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -129,6 +135,7 @@ public class MVPayView {
 		par.setLayout(cardLayout);
 
 		fir_panel = new JPanel();
+		fir_panel.setBackground(Color.WHITE);
 		par.add(fir_panel, "fir");
 		SpringLayout sl_fir_panel = new SpringLayout();
 		fir_panel.setLayout(sl_fir_panel);
@@ -147,6 +154,7 @@ public class MVPayView {
 		fir_panel.add(lblNewLabel_3);
 
 		JComboBox comboBox = new JComboBox();
+		comboBox.setBackground(Color.WHITE);
 		sl_fir_panel.putConstraint(SpringLayout.WEST, comboBox, 121, SpringLayout.WEST, fir_panel);
 		sl_fir_panel.putConstraint(SpringLayout.EAST, lblNewLabel_2, -6, SpringLayout.WEST, comboBox);
 		sl_fir_panel.putConstraint(SpringLayout.WEST, lblNewLabel, 0, SpringLayout.WEST, comboBox);
@@ -164,6 +172,7 @@ public class MVPayView {
 		textField.setColumns(10);
 
 		sec_panel = new JPanel();
+		sec_panel.setBackground(Color.WHITE);
 		par.add(sec_panel, "sec");
 		SpringLayout sl_sec_panel = new SpringLayout();
 		sec_panel.setLayout(sl_sec_panel);
@@ -189,6 +198,7 @@ public class MVPayView {
 		sec_panel.add(lblNewLabel_6);
 
 		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBackground(Color.WHITE);
 		sl_sec_panel.putConstraint(SpringLayout.NORTH, comboBox_1, -3, SpringLayout.NORTH, lblNewLabel_4);
 		sl_sec_panel.putConstraint(SpringLayout.WEST, comboBox_1, 45, SpringLayout.EAST, lblNewLabel_4);
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { "\uAD6D\uBBFC\uCE74\uB4DC",
@@ -208,6 +218,7 @@ public class MVPayView {
 		textField_2.setColumns(10);
 
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
 		springLayout.putConstraint(SpringLayout.NORTH, panel_1, 6, SpringLayout.SOUTH, par);
 		springLayout.putConstraint(SpringLayout.WEST, panel_1, -299, SpringLayout.EAST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, -10, SpringLayout.SOUTH, frame.getContentPane());
@@ -218,7 +229,8 @@ public class MVPayView {
 
 		JButton btnNewButton = new JButton("\uACB0\uC81C \uD655\uC778");
 		sl_panel_1.putConstraint(SpringLayout.NORTH, btnNewButton, 0, SpringLayout.NORTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.EAST, btnNewButton, -88, SpringLayout.EAST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.WEST, btnNewButton, 92, SpringLayout.WEST, panel_1);
+		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -243,12 +255,14 @@ public class MVPayView {
 		panel_1.add(btnNewButton);
 
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(153, 204, 255));
 		springLayout.putConstraint(SpringLayout.NORTH, panel_2, 0, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, panel_2, 0, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, panel_2, 333, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_2);
 
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(Color.WHITE);
 		springLayout.putConstraint(SpringLayout.NORTH, panel_3, 49, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_3, -267, SpringLayout.SOUTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.NORTH, panel, 17, SpringLayout.SOUTH, panel_3);

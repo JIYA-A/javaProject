@@ -47,7 +47,7 @@ public class MVSignupView {
 
 	private void initialize() {
 		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(0, 102, 204));
+		frame.getContentPane().setBackground(new Color(153, 204, 255));
 		frame.setBounds(100, 100, 412, 650);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
@@ -66,7 +66,7 @@ public class MVSignupView {
 		springLayout.putConstraint(SpringLayout.WEST, panel_1, 10, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, -21, SpringLayout.SOUTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, panel_1, -10, SpringLayout.EAST, frame.getContentPane());
-		panel_1.setBackground(new Color(0, 102, 204));
+		panel_1.setBackground(new Color(153, 204, 255));
 		SpringLayout sl_panel = new SpringLayout();
 		panel.setLayout(sl_panel);
 		

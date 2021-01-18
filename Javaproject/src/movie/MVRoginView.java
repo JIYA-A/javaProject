@@ -40,7 +40,7 @@ public class MVRoginView{
 	private void initialize() {
 		CustomerDAO customer = new CustomerDAO();
 		frame = new JFrame("편안한 영예씨");
-		frame.getContentPane().setBackground(new Color(0, 102, 204));
+		frame.getContentPane().setBackground(new Color(153, 204, 255));
 		frame.setBounds(100, 100, 359, 589);
 		frame.setLocationRelativeTo(null);    // 창이 가운데에서 열리게 하는 명령어
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
