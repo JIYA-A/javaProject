@@ -74,7 +74,7 @@ public class MVPageView {
 		
 		//JTable 데이터초기화
 		//DAO,AO -> list에 넣어 배열로 구성 후 출력
-
+		
 		
 		scrollPane.setViewportView(table);
 		
