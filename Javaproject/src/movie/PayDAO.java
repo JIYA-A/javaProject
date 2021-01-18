@@ -63,14 +63,14 @@ public class PayDAO {
 
 		connection(); // DB연결
 
-		String sql = "insert into pay values(pay_payUid.nextval,?,?,?,?,?)";
+		String sql = "insert into pay values(pay_payUid.nextval,?,?,?,?)";
 		try {
 			pst = conn.prepareStatement(sql);
-			pst.setString(1, vo.getPayMethod());
 			pst.setInt(2, vo.getTotalPrice());
 			pst.setString(3, vo.getPayDate());
-			pst.setInt(4, vo.getUserUid());
-			pst.setInt(5, vo.getSeatUid());
+			pst.setString(4, vo.getCardNumber());
+			pst.setNString(5, vo.getMovieName());
+			
 
 			pst.executeUpdate(); // sql문장 실행
 
@@ -99,13 +99,13 @@ public class PayDAO {
 
 			while (rs.next()) {
 				int getPayUid = rs.getInt(1);
-				String getPayMethod = rs.getString(2);
-				int getTotalPrice = rs.getInt(3);
-				String getPayDate = rs.getString(4);
-				int getUserUid = rs.getInt(5);
-				int getSeatUid = rs.getInt(6);
+				int getTotalPrice = rs.getInt(2);
+				String getPayDate = rs.getString(3);
+				String getCardNum = rs.getString(4);
+				String getMovieName = rs.getNString(5);
+				
 
-				list.add(new PayVO(getPayUid, getPayMethod, getTotalPrice, getPayDate, getUserUid, getSeatUid));
+				list.add(new PayVO(getPayUid, getTotalPrice, getPayDate, getCardNum, getMovieName));
 
 			}
 		} catch (SQLException e) {

@@ -67,11 +67,11 @@ public class MyPageDAO {
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setInt(1, vo.getPayUid());
-			pst.setString(2, vo.getPayMethod());
+			//pst.setString(2, vo.getPayMethod());
 			pst.setInt(3, vo.getTotalPrice());
 			pst.setString(4, vo.getPayDate());
-			pst.setInt(5, vo.getUserUid());
-			pst.setInt(6, vo.getSeatUid());
+			//pst.setInt(5, vo.getUserUid());
+			//pst.setInt(6, vo.getSeatUid());
 
 			pst.executeUpdate(); // sql문장 실행
 
