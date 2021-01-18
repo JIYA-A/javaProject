@@ -23,11 +23,15 @@ public class MVSeatView {
 	private JFrame frame;
 	private JButton[][] buttons;
 	
-	public static void main(String[] args) {
+	public String movieNm;
+	public String time;
+	public int totalPrice;
+	
+	public static void main(String movieNm, String time) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MVSeatView window = new MVSeatView();
+					MVSeatView window = new MVSeatView(movieNm, time);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +41,9 @@ public class MVSeatView {
 	}
 
 	
-	public MVSeatView() {
+	public MVSeatView(String movieNm, String time) {
+		this.movieNm = movieNm;
+		this.time = time;
 		initialize();
 	}
 
@@ -250,6 +256,18 @@ public class MVSeatView {
 		panel_2.setLayout(sl_panel_2);
 		
 		JButton btnNewButton_30 = new JButton("\uCE74\uB4DC\uACB0\uC81C");
+		btnNewButton_30.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+//				MVPayView pay = new MVPayView();
+//				pay.movieNm = "¸í·®";
+//				pay.time = "08:00";
+//				pay.totalPrice = 12000;
+				
+				MVPayView.main(movieNm, time, totalPrice);
+			}
+		});
 		panel_2.add(btnNewButton_30);
 		
 		JPanel panel_4 = new JPanel();
