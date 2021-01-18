@@ -225,10 +225,8 @@ public class MVPayView {
 				// 클릭 시, 결제완료창을 띄우기
 				JOptionPane.showMessageDialog(null, "결제가 완료되었습니다.", "", JOptionPane.PLAIN_MESSAGE);
 				// DB저장하기하기기
-				// totalPrice =
+				
 				String cardNumber = textCardNumber.getText();
-				
-				
 				dao.addPay(new PayVO(totalPrice, cardNumber, movieNm));
 				
 				// 예매하기 창으로 돌아가기

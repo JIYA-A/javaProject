@@ -115,7 +115,9 @@ public class MVPageView {
 		SpringLayout sl_panel_1 = new SpringLayout();
 		panel_1.setLayout(sl_panel_1);
 		
-		JButton removeBtn = new JButton("\uCDE8\uC18C");
+		JButton removeBtn = new JButton("\uC608\uB9E4\uCDE8\uC18C");
+		sl_panel_1.putConstraint(SpringLayout.WEST, removeBtn, 22, SpringLayout.WEST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, removeBtn, -2, SpringLayout.SOUTH, panel_1);
 		removeBtn.addActionListener(new ActionListener() {
 	      	public void actionPerformed(ActionEvent e) {
 	      	}
@@ -123,11 +125,27 @@ public class MVPageView {
 		removeBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				int n = rv_table.getSelectedRow();
+				if(n>=0&&n<rv_table.getRowCount()) {
+					model.removeRow(n);
+					dao.deletePay(n-1);
+				}
+			
 				
 			}
 		});
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, removeBtn, -2, SpringLayout.SOUTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.EAST, removeBtn, -10, SpringLayout.EAST, panel_1);
 		panel_1.add(removeBtn);
+		
+		JButton btnNewButton = new JButton("\uB418\uB3CC\uC544\uAC00\uAE30");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				new MVRvView().main(null);	
+				frame.dispose();
+			}
+		});
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, btnNewButton, 0, SpringLayout.SOUTH, removeBtn);
+		sl_panel_1.putConstraint(SpringLayout.EAST, btnNewButton, -10, SpringLayout.EAST, panel_1);
+		panel_1.add(btnNewButton);
 	}
 }

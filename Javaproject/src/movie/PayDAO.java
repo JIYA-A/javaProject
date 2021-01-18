@@ -120,15 +120,15 @@ public class PayDAO {
 
 	}
 
-	public void deletePay(int selectSeatUid) {
+	public void deletePay(int selectUid) {
 		try {
 
 			connection();
 
 			// 3. DB에 보낼 Query문 작성
-			String sql = "delete from pay where seatUid = ?";
+			String sql = "delete from pay where payUid = ?";
 			pst = conn.prepareStatement(sql);
-			pst.setInt(1, selectSeatUid);
+			pst.setInt(1, selectUid);
 
 			// 4. Query 실행
 			pst.executeUpdate();
@@ -139,5 +139,6 @@ public class PayDAO {
 			close();
 		} // end try~catch!finally
 	}
+	
 
 }
