@@ -63,6 +63,10 @@ public class MVPayView {
 	/**
 	 * Create the application.
 	 */
+	public MVPayView() {
+		initialize();
+	}
+	
 	public MVPayView(String movieNm, String time, int totalPrice) {
 		this.movieNm = movieNm;
 		this.time = time;
@@ -101,10 +105,10 @@ public class MVPayView {
 		springLayout.putConstraint(SpringLayout.NORTH, par, 210, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, par, 323, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, par, -44, SpringLayout.SOUTH, frame.getContentPane());
-		
-		
+
 		ImageIcon card_icon = new ImageIcon("imgs/ccard.jpg");
 		JButton btn1 = new JButton(new ImageIcon("C:\\Users\\Chosun\\Documents\\\uCE74\uCE74\uC624\uD1A1 \uBC1B\uC740 \uD30C\uC77C\\KakaoTalk_20210119_083401860.png"));
+
 		btn1.setBackground(Color.WHITE);
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

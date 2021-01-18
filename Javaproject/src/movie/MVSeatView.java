@@ -6,9 +6,11 @@ import javax.swing.JFrame;
 import javax.swing.SpringLayout;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -27,6 +29,12 @@ public class MVSeatView {
 	public String movieNm;
 	public String time;
 	public int totalPrice;
+	
+	private int num;
+	private int count =0;
+	private int value1 =0;
+	private int value2 = 0;
+	private int value3 = 0;
 	
 	public static void main(String movieNm, String time) {
 		EventQueue.invokeLater(new Runnable() {
@@ -103,6 +111,12 @@ public class MVSeatView {
 		
 		//JButton 생성
 		buttons = new JButton[5][6];
+		boolean[][] buttonCheck = new boolean[5][6]; // boolean 타입으로 선언
+		for (int i = 0; i < buttons.length; i++) {
+			for (int j = 0; j < buttons[i].length; j++) {
+				buttonCheck[i][j] = false;  // 초기값으로 모두 false(버튼을 누르지 않은 상태)
+			}	
+		}
 		
 		for (int i = 0; i < buttons.length; i++) {
 			for (int j = 0; j < buttons[i].length; j++) {
@@ -110,11 +124,26 @@ public class MVSeatView {
 				final int col = j;
 				
 				ImageIcon seat_icon = new ImageIcon("imgs/sseat.jpg");
+				ImageIcon seatrv_icon = new ImageIcon("imgs/ssseat.jpg");
 				buttons[i][j] = new JButton(seat_icon); //이미지 
 				buttons[i][j].addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						System.out.println(row+","+col);
+						
+						// type이 boolean이면 앞에 !을 붙이면 해당 값의 반대라는 의미 true면 false, false면 true 일종의 스위치 처럼 작동함
+						buttonCheck[row][col] = !buttonCheck[row][col];
+						
+						System.out.println(buttonCheck[row][col]);
+						if(buttonCheck[row][col]) {
+							//색깔 바꿈 ON
+							buttons[row][col].setIcon(seatrv_icon);
+							count++;
+						}else {
+							//색깔 바꿈 OFF
+							buttons[row][col].setIcon(seat_icon);
+							count--;
+						}						
 					}
 				});
 			}
@@ -125,6 +154,7 @@ public class MVSeatView {
 				panel_3.add(buttons[i][j]);
 			}
 		}
+		
 	
 		SpringLayout sl_panel = new SpringLayout();
 		panel.setLayout(sl_panel);
@@ -149,6 +179,9 @@ public class MVSeatView {
 		
 		//comboBox 생성
 		JComboBox comboBox = new JComboBox();
+		comboBox.addMouseListener(new MouseAdapter() {
+		
+		});
 		sl_panel.putConstraint(SpringLayout.WEST, comboBox, 68, SpringLayout.WEST, panel);
 		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel, 33, SpringLayout.SOUTH, comboBox);
 		sl_panel.putConstraint(SpringLayout.NORTH, comboBox, 6, SpringLayout.SOUTH, lblNewLabel_1);
@@ -156,20 +189,38 @@ public class MVSeatView {
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(comboBox.getSelectedItem());
+				value1 = comboBox.getSelectedIndex();
+				System.out.println("값"+value1);
 			}
 		});
 		panel.add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox();
+		
 		sl_panel.putConstraint(SpringLayout.NORTH, comboBox_1, 6, SpringLayout.SOUTH, lblNewLabel);
 		sl_panel.putConstraint(SpringLayout.EAST, comboBox_1, 0, SpringLayout.EAST, lblNewLabel);
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"0\uBA85", "1\uBA85", "2\uBA85", "3\uBA85", "4\uBA85", "5\uBA85", "6\uBA85"}));
+		comboBox_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(comboBox_1.getSelectedItem());
+				value2 = comboBox_1.getSelectedIndex();
+				System.out.println("값"+value2);
+			}
+		});
 		panel.add(comboBox_1);
 		
 		JComboBox comboBox_2 = new JComboBox();
+		
 		sl_panel.putConstraint(SpringLayout.NORTH, comboBox_2, 6, SpringLayout.SOUTH, lblNewLabel_2);
 		sl_panel.putConstraint(SpringLayout.EAST, comboBox_2, 0, SpringLayout.EAST, lblNewLabel);
 		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"0\uBA85", "1\uBA85", "2\uBA85", "3\uBA85", "4\uBA85", "5\uBA85", "6\uBA85"}));
+		comboBox_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(comboBox_2.getSelectedItem());
+				value3 = comboBox_2.getSelectedIndex();
+				System.out.println("값"+value3);
+			}
+		});
 		panel.add(comboBox_2);
 		frame.getContentPane().add(panel_2);
 		SpringLayout sl_panel_2 = new SpringLayout();
@@ -184,14 +235,22 @@ public class MVSeatView {
 		btnNewButton_30.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				int sum = value1+value2+value3;
+				System.out.println("count : "+count);
+				System.out.println("합계 : "+sum);
+				totalPrice = value1*10000+value2*8000+value3*5000;
+				if (sum == count) {
+					new MVPayView().main(movieNm, time, totalPrice);					
+					frame.dispose();
+				}else if(count>sum){
+					JOptionPane.showMessageDialog(null, "선택한 인원보다 많습니다.", "", JOptionPane.PLAIN_MESSAGE);
+				}else {
+					JOptionPane.showMessageDialog(null, "선택한 인원보다 적습니다.", "", JOptionPane.PLAIN_MESSAGE);
+				}
 //				MVPayView pay = new MVPayView();
 //				pay.movieNm = "명량";
 //				pay.time = "08:00";
 //				pay.totalPrice = 12000;
-				//올라가라
-				
-				MVPayView.main(movieNm, time, totalPrice);
 			}
 		});
 		panel_2.add(btnNewButton_30);
