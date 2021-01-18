@@ -74,7 +74,7 @@ public class MVRvView {
 		btn_MVgo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new MVSeatView().main(null);
+				//new MVSeatView().main(null);
 			}
 		});
 		springLayout.putConstraint(SpringLayout.NORTH, btn_MVgo, 25, SpringLayout.SOUTH, panel_1);
