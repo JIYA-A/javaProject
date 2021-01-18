@@ -50,8 +50,10 @@ public class MVRvView {
 	private void initialize() {
 
 		frame = new JFrame();
+
 		frame.getContentPane().setBackground(new Color(153, 204, 255));
 		frame.setBounds(100, 100, 720, 644);
+
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
@@ -62,6 +64,7 @@ public class MVRvView {
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, -10, SpringLayout.SOUTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, panel_1, -10, SpringLayout.EAST, frame.getContentPane());
 		panel_1.setBackground(Color.WHITE);
+		
 		frame.getContentPane().add(panel_1);
 		SpringLayout sl_panel_1 = new SpringLayout();
 		panel_1.setLayout(sl_panel_1);

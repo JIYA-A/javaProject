@@ -51,8 +51,10 @@ public class MVSeatView {
 	
 	private void initialize() {
 		frame = new JFrame();
+
 		frame.getContentPane().setBackground(new Color(153, 204, 255));
 		frame.setBounds(100, 100, 800, 578);
+
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);

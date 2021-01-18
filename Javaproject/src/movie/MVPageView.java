@@ -50,8 +50,10 @@ public class MVPageView {
 	
 	private void initialize() {
 		PayDAO dao = new PayDAO();
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 500);
+		frame.setLocationRelativeTo(null);    // 창이 가운데에서 열리게 하는 명령어
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
@@ -74,7 +76,7 @@ public class MVPageView {
 		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, 240, SpringLayout.SOUTH, lblNewLabel);
 		springLayout.putConstraint(SpringLayout.EAST, scrollPane, -53, SpringLayout.EAST, frame.getContentPane());
 		frame.getContentPane().add(scrollPane);
-		
+		//예매내역확인
 		ArrayList<PayVO> rv = dao.selectPayAll();
 		String[] columName = {"영화","시간","총 금액"};
 		String[][] rowDatas = new String[rv.size()][columName.length];
@@ -115,7 +117,9 @@ public class MVPageView {
 		SpringLayout sl_panel_1 = new SpringLayout();
 		panel_1.setLayout(sl_panel_1);
 		
-		JButton removeBtn = new JButton("\uCDE8\uC18C");
+		JButton removeBtn = new JButton("\uC608\uB9E4\uCDE8\uC18C");
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, removeBtn, -2, SpringLayout.SOUTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.EAST, removeBtn, -10, SpringLayout.EAST, panel_1);
 		removeBtn.addActionListener(new ActionListener() {
 	      	public void actionPerformed(ActionEvent e) {
 	      	}
@@ -123,11 +127,18 @@ public class MVPageView {
 		removeBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				//선택한거 지우기
+				row = rv_table.getSelectedRow();
+				if(row>=0&&row<rv_table.getRowCount()) {
+					model.removeRow(row);
+					dao.deletePay(row-1);
+				}
 				
 			}
 		});
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, removeBtn, -2, SpringLayout.SOUTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.EAST, removeBtn, -10, SpringLayout.EAST, panel_1);
 		panel_1.add(removeBtn);
+		
+		
+	
 	}
 }

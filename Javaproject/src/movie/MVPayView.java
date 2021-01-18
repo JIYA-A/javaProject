@@ -80,6 +80,7 @@ public class MVPayView {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 349, 453);
+		frame.setLocationRelativeTo(null);    // 창이 가운데에서 열리게 하는 명령어
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
@@ -237,10 +238,8 @@ public class MVPayView {
 				// 클릭 시, 결제완료창을 띄우기
 				JOptionPane.showMessageDialog(null, "결제가 완료되었습니다.", "", JOptionPane.PLAIN_MESSAGE);
 				// DB저장하기하기기
-				// totalPrice =
+				
 				String cardNumber = textCardNumber.getText();
-				
-				
 				dao.addPay(new PayVO(totalPrice, cardNumber, movieNm));
 				
 				// 예매하기 창으로 돌아가기
