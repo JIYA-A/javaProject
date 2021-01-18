@@ -98,7 +98,7 @@ public class PayDAO {
 			rs = pst.executeQuery();
 
 			while (rs.next()) {
-				String getMovieName = rs.getNString(1);
+				String getMovieName = rs.getString(1);
 				String getPayDate = rs.getString(2);
 				int getTotalPrice = rs.getInt(3);
 				
