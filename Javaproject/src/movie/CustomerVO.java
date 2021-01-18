@@ -7,6 +7,17 @@ public class CustomerVO {
 	private String userPw; 
 	private String userPhoneNum;
 	
+	
+	public CustomerVO() {
+		super();
+	}
+
+	public CustomerVO(String userId, String userPw) {
+		super();
+		this.userId = userId;
+		this.userPw = userPw;
+	}
+
 	public CustomerVO(String userName, String userId, String userPw, String userPhoneNum) {
 		super();
 		this.userName = userName;
@@ -43,6 +54,12 @@ public class CustomerVO {
 	}
 	public void setUserPhoneNum(String userPhoneNum) {
 		this.userPhoneNum = userPhoneNum;
+	}
+
+	@Override
+	public String toString() {
+		return "CustomerVO [userUid=" + userUid + ", userName=" + userName + ", userId=" + userId + ", userPw=" + userPw
+				+ ", userPhoneNum=" + userPhoneNum + "]";
 	}
 	
 	
