@@ -52,6 +52,7 @@ public class MVPageView {
 		PayDAO dao = new PayDAO();
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 500);
+		frame.setLocationRelativeTo(null);    // 창이 가운데에서 열리게 하는 명령어
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
@@ -125,6 +126,7 @@ public class MVPageView {
 		removeBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+
 				int n = rv_table.getSelectedRow();
 				if(n>=0&&n<rv_table.getRowCount()) {
 					model.removeRow(n);
@@ -132,20 +134,15 @@ public class MVPageView {
 				}
 			
 				
+
+				new MVRvView().main(null);
+				frame.dispose();
+
 			}
 		});
 		panel_1.add(removeBtn);
 		
-		JButton btnNewButton = new JButton("\uB418\uB3CC\uC544\uAC00\uAE30");
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				new MVRvView().main(null);	
-				frame.dispose();
-			}
-		});
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, btnNewButton, 0, SpringLayout.SOUTH, removeBtn);
-		sl_panel_1.putConstraint(SpringLayout.EAST, btnNewButton, -10, SpringLayout.EAST, panel_1);
-		panel_1.add(btnNewButton);
+		
+	
 	}
 }
