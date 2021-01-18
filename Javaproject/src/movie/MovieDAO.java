@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class MovieDAO {
 	private Connection conn;
@@ -55,6 +56,55 @@ public class MovieDAO {
 		}
 
 	}
+	
+	public ArrayList<MovieVO> selectBookAll() {
+	      ArrayList<MovieVO> list = new ArrayList<MovieVO>();
+	      //DB연결기능
+	      
+	      
+	      //전체 도서를 조회하는 기능을 구현하시오.
+	      try {
+	         //1~2
+	         connection();
+	         // 3.DB에 보낼 Query 작성
+	         String sql = "select * from movie";
+	         pst = conn.prepareStatement(sql);
+
+	         // 4.Query 실행
+	         // DB에 저장된 정보를 ResultSet 객체에 저장
+	         rs = pst.executeQuery();
+
+	         // 5.ResultSet객체에 저장된 DB 정보 가져오기
+	        
+	         while (rs.next()) {
+	            int movieUid = rs.getInt(1);
+	            String movieTitle = rs.getString(2);
+	            String movieTime = rs.getString(3);
+	            
+	            
+	            
+	            //리스트에 회원정보 저장 
+	            list.add(new MovieVO(movieUid,movieTitle,movieTime));
+	           
+	         }
+
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {// try~catch문과는 상관없이 무조건 실행하는 구문
+
+	         // 6. DB관련 연결개체 종료
+	         // -> 종료하지 않을 경우 연결된 객체들이 쌓이게 되면서 DB연결에 문제가 발생
+	         close();
+	         }
+	      
+	      
+	      //DB연결종료
+	      
+	      return list;
+	      
+	   }
+	
+	
 
 
 }
