@@ -176,11 +176,7 @@ public class MVSeatView {
 		//comboBox 생성
 		JComboBox comboBox = new JComboBox();
 		comboBox.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				value1 = comboBox.getSelectedIndex();
-				
-			}
+		
 		});
 		sl_panel.putConstraint(SpringLayout.WEST, comboBox, 68, SpringLayout.WEST, panel);
 		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel, 33, SpringLayout.SOUTH, comboBox);
@@ -189,33 +185,38 @@ public class MVSeatView {
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(comboBox.getSelectedItem());
+				value1 = comboBox.getSelectedIndex();
+				System.out.println("값"+value1);
 			}
 		});
 		panel.add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				value2 = comboBox.getSelectedIndex();
-			}
-		});
+		
 		sl_panel.putConstraint(SpringLayout.NORTH, comboBox_1, 6, SpringLayout.SOUTH, lblNewLabel);
 		sl_panel.putConstraint(SpringLayout.EAST, comboBox_1, 0, SpringLayout.EAST, lblNewLabel);
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"0\uBA85", "1\uBA85", "2\uBA85", "3\uBA85", "4\uBA85", "5\uBA85", "6\uBA85"}));
+		comboBox_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(comboBox_1.getSelectedItem());
+				value2 = comboBox_1.getSelectedIndex();
+				System.out.println("값"+value2);
+			}
+		});
 		panel.add(comboBox_1);
 		
 		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				value3 = comboBox.getSelectedIndex();
-			
-			}
-		});
+		
 		sl_panel.putConstraint(SpringLayout.NORTH, comboBox_2, 6, SpringLayout.SOUTH, lblNewLabel_2);
 		sl_panel.putConstraint(SpringLayout.EAST, comboBox_2, 0, SpringLayout.EAST, lblNewLabel);
 		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"0\uBA85", "1\uBA85", "2\uBA85", "3\uBA85", "4\uBA85", "5\uBA85", "6\uBA85"}));
+		comboBox_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(comboBox_2.getSelectedItem());
+				value3 = comboBox_2.getSelectedIndex();
+				System.out.println("값"+value3);
+			}
+		});
 		panel.add(comboBox_2);
 		frame.getContentPane().add(panel_2);
 		SpringLayout sl_panel_2 = new SpringLayout();
@@ -231,7 +232,8 @@ public class MVSeatView {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int sum = value1+value2+value3;
-				
+				System.out.println("합계"+sum);
+				totalPrice = value1*10000+value2*8000+value3*5000;
 				if (sum == count) {
 					new MVPayView(movieNm, time, totalPrice);
 					frame.dispose();
