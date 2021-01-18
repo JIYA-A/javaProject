@@ -227,7 +227,10 @@ public class MVPayView {
 			public void mouseClicked(MouseEvent e) {
 				//클릭 시, 결제완료창을 띄우기
 				JOptionPane.showMessageDialog(null, "결제가 완료되었습니다.", "", JOptionPane.PLAIN_MESSAGE);
-				//DB저장
+				//DB저장하기
+				
+				
+				
 				
 				//예매하기 창으로 돌아가기
 				new MVRvView().main(null);
