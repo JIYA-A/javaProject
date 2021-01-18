@@ -62,6 +62,10 @@ public class MVPayView {
 	/**
 	 * Create the application.
 	 */
+	public MVPayView() {
+		initialize();
+	}
+	
 	public MVPayView(String movieNm, String time, int totalPrice) {
 		this.movieNm = movieNm;
 		this.time = time;

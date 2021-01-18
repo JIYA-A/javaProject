@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JTable;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import java.awt.event.ActionEvent;
@@ -21,6 +22,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.awt.Button;
+import java.awt.Color;
+import java.awt.Font;
 
 public class MVPageView {
 
@@ -53,6 +56,7 @@ public class MVPageView {
 		PayDAO dao = new PayDAO();
 		
 		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 450, 500);
 		frame.setLocationRelativeTo(null);    // 창이 가운데에서 열리게 하는 명령어
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,21 +64,24 @@ public class MVPageView {
 		frame.getContentPane().setLayout(springLayout);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(153, 204, 255));
 		springLayout.putConstraint(SpringLayout.NORTH, panel, 0, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, panel, 0, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel, 70, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, panel, 434, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel);
 		
-		JLabel lblNewLabel = new JLabel("My \uC608\uB9E4 \uB0B4\uC5ED");
-		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel, 53, SpringLayout.SOUTH, panel);
-		springLayout.putConstraint(SpringLayout.WEST, lblNewLabel, 66, SpringLayout.WEST, frame.getContentPane());
+		JLabel lblNewLabel = new JLabel("\uC608\uB9E4 \uB0B4\uC5ED");
+		springLayout.putConstraint(SpringLayout.EAST, lblNewLabel, -197, SpringLayout.EAST, frame.getContentPane());
+		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		frame.getContentPane().add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 28, SpringLayout.SOUTH, lblNewLabel);
+		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel, -52, SpringLayout.NORTH, scrollPane);
+		springLayout.putConstraint(SpringLayout.SOUTH, lblNewLabel, -25, SpringLayout.NORTH, scrollPane);
+		springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 166, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, -83, SpringLayout.SOUTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, scrollPane, 48, SpringLayout.WEST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, 240, SpringLayout.SOUTH, lblNewLabel);
 		springLayout.putConstraint(SpringLayout.EAST, scrollPane, -53, SpringLayout.EAST, frame.getContentPane());
 		frame.getContentPane().add(scrollPane);
 		//예매내역확인
@@ -107,7 +114,8 @@ public class MVPageView {
 		
 		
 		JPanel panel_1 = new JPanel();
-		springLayout.putConstraint(SpringLayout.NORTH, panel_1, 21, SpringLayout.SOUTH, scrollPane);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_1, 399, SpringLayout.NORTH, frame.getContentPane());
+		panel_1.setBackground(Color.WHITE);
 		springLayout.putConstraint(SpringLayout.WEST, panel_1, 48, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, 56, SpringLayout.SOUTH, scrollPane);
 		
@@ -119,6 +127,7 @@ public class MVPageView {
 		panel_1.setLayout(sl_panel_1);
 		
 		JButton removeBtn = new JButton("\uC608\uB9E4\uCDE8\uC18C");
+		removeBtn.setBackground(Color.WHITE);
 		sl_panel_1.putConstraint(SpringLayout.WEST, removeBtn, 35, SpringLayout.WEST, panel_1);
 		sl_panel_1.putConstraint(SpringLayout.SOUTH, removeBtn, -2, SpringLayout.SOUTH, panel_1);
 		removeBtn.addActionListener(new ActionListener() {
@@ -140,6 +149,7 @@ public class MVPageView {
 		panel_1.add(removeBtn);
 		
 		JButton btnreturn = new JButton("\uB4A4\uB85C\uAC00\uAE30");
+		btnreturn.setBackground(Color.WHITE);
 		btnreturn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -154,6 +164,16 @@ public class MVPageView {
 		sl_panel_1.putConstraint(SpringLayout.NORTH, btnreturn, 0, SpringLayout.NORTH, removeBtn);
 		sl_panel_1.putConstraint(SpringLayout.EAST, btnreturn, -28, SpringLayout.EAST, panel_1);
 		panel_1.add(btnreturn);
+		
+		
+		ImageIcon page_icon = new ImageIcon("imgs/page.png");
+		JLabel lblNewLabel_1 = new JLabel(page_icon);
+		springLayout.putConstraint(SpringLayout.WEST, lblNewLabel, 6, SpringLayout.EAST, lblNewLabel_1);
+		springLayout.putConstraint(SpringLayout.EAST, lblNewLabel_1, -287, SpringLayout.EAST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 6, SpringLayout.SOUTH, panel);
+		springLayout.putConstraint(SpringLayout.WEST, lblNewLabel_1, 48, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, lblNewLabel_1, -7, SpringLayout.NORTH, scrollPane);
+		frame.getContentPane().add(lblNewLabel_1);
 		
 		
 	
