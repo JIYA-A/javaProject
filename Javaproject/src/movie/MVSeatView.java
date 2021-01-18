@@ -264,7 +264,7 @@ public class MVSeatView {
 //				pay.movieNm = "명량";
 //				pay.time = "08:00";
 //				pay.totalPrice = 12000;
-				//ㅏ이ㅏ머리ㅏ
+				//올라가라
 				
 				MVPayView.main(movieNm, time, totalPrice);
 			}
