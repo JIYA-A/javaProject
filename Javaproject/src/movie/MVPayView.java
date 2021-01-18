@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
@@ -31,16 +32,25 @@ public class MVPayView {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	
+	private JLabel lbl_moiveName, lbl_movieTime, lbl_total;
+	private int pos = 0;
 	
-
+//	public static String movieNm;
+//	public static String time;
+//	public static int totalPrice;
+	public String movieNm;
+	public String time;
+	public int totalPrice;
+	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String movieNm, String time, int totalPrice) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MVPayView window = new MVPayView();
+					MVPayView window = new MVPayView(movieNm, time, totalPrice);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,7 +62,11 @@ public class MVPayView {
 	/**
 	 * Create the application.
 	 */
-	public MVPayView() {
+	public MVPayView(String movieNm, String time, int totalPrice) {
+		this.movieNm = movieNm;
+		this.time = time;
+		this.totalPrice = totalPrice;
+		
 		initialize();
 	}
 
@@ -60,8 +74,11 @@ public class MVPayView {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		PayDAO dao = new PayDAO();
+		MovieDAO ad = new MovieDAO();
+		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 449, 403);
+		frame.setBounds(100, 100, 349, 453);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
@@ -70,15 +87,15 @@ public class MVPayView {
 		cardLayout = new CardLayout();
 		
 		JPanel panel = new JPanel();
-		springLayout.putConstraint(SpringLayout.NORTH, panel, 99, SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, panel, 386, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel);
 		
 		JPanel par = new JPanel();
-		springLayout.putConstraint(SpringLayout.WEST, panel, 55, SpringLayout.WEST, par);
-		springLayout.putConstraint(SpringLayout.NORTH, par, 145, SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, par, -44, SpringLayout.SOUTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel, 0, SpringLayout.WEST, par);
 		springLayout.putConstraint(SpringLayout.SOUTH, panel, -6, SpringLayout.NORTH, par);
+		springLayout.putConstraint(SpringLayout.EAST, panel, 0, SpringLayout.EAST, par);
+		springLayout.putConstraint(SpringLayout.NORTH, par, 210, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, par, 323, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, par, -44, SpringLayout.SOUTH, frame.getContentPane());
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JButton btn1 = new JButton("\uACC4\uC88C\uC774\uCCB4");
@@ -100,7 +117,7 @@ public class MVPayView {
 		});
 		panel.add(btn1);
 		
-		JButton btn2 = new JButton("\uCE74\uB4DC\uACB0\uC81C");
+		JButton btn2 = new JButton("\uC2E0\uC6A9/\uCCB4\uD06C\uCE74\uB4DC");
 		btn2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -111,7 +128,6 @@ public class MVPayView {
 		});
 		panel.add(btn2);
 		springLayout.putConstraint(SpringLayout.WEST, par, 10, SpringLayout.WEST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, par, 424, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(par);
 		
 		
@@ -123,31 +139,31 @@ public class MVPayView {
 		fir_panel.setLayout(sl_fir_panel);
 		
 		JLabel lblNewLabel = new JLabel("\uACC4\uC88C\uC815\uBCF4 \uC785\uB825");
-		sl_fir_panel.putConstraint(SpringLayout.NORTH, lblNewLabel, 26, SpringLayout.NORTH, fir_panel);
-		sl_fir_panel.putConstraint(SpringLayout.EAST, lblNewLabel, -170, SpringLayout.EAST, fir_panel);
 		fir_panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_2 = new JLabel("\uC740\uD589\uC120\uD0DD");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		sl_fir_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_2, 63, SpringLayout.NORTH, fir_panel);
-		sl_fir_panel.putConstraint(SpringLayout.WEST, lblNewLabel_2, 81, SpringLayout.WEST, fir_panel);
 		fir_panel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("\uC785\uAE08\uC790\uBA85");
+		sl_fir_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel_2, -13, SpringLayout.NORTH, lblNewLabel_3);
+		sl_fir_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel_3, -45, SpringLayout.SOUTH, fir_panel);
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		sl_fir_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_3, 18, SpringLayout.SOUTH, lblNewLabel_2);
-		sl_fir_panel.putConstraint(SpringLayout.EAST, lblNewLabel_3, 0, SpringLayout.EAST, lblNewLabel_2);
 		fir_panel.add(lblNewLabel_3);
 		
 		JComboBox comboBox = new JComboBox();
+		sl_fir_panel.putConstraint(SpringLayout.WEST, comboBox, 121, SpringLayout.WEST, fir_panel);
+		sl_fir_panel.putConstraint(SpringLayout.EAST, lblNewLabel_2, -6, SpringLayout.WEST, comboBox);
+		sl_fir_panel.putConstraint(SpringLayout.WEST, lblNewLabel, 0, SpringLayout.WEST, comboBox);
+		sl_fir_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel, -39, SpringLayout.NORTH, comboBox);
 		sl_fir_panel.putConstraint(SpringLayout.NORTH, comboBox, -3, SpringLayout.NORTH, lblNewLabel_2);
-		sl_fir_panel.putConstraint(SpringLayout.WEST, comboBox, 22, SpringLayout.EAST, lblNewLabel_2);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\uAD6D\uBBFC\uC740\uD589 0000-00-000", "\uB18D\uD611\uC740\uD589 111-1111-1111-11", "\uAD11\uC8FC\uC740\uD589 22222-222-2222"}));
 		fir_panel.add(comboBox);
 		
 		textField = new JTextField();
-		sl_fir_panel.putConstraint(SpringLayout.NORTH, textField, 0, SpringLayout.NORTH, lblNewLabel_3);
-		sl_fir_panel.putConstraint(SpringLayout.WEST, textField, 0, SpringLayout.WEST, comboBox);
+		sl_fir_panel.putConstraint(SpringLayout.WEST, textField, 151, SpringLayout.WEST, fir_panel);
+		sl_fir_panel.putConstraint(SpringLayout.EAST, lblNewLabel_3, -36, SpringLayout.WEST, textField);
+		sl_fir_panel.putConstraint(SpringLayout.NORTH, textField, -3, SpringLayout.NORTH, lblNewLabel_3);
 		fir_panel.add(textField);
 		textField.setColumns(10);
 		
@@ -157,8 +173,8 @@ public class MVPayView {
 		sec_panel.setLayout(sl_sec_panel);
 		
 		JLabel lblNewLabel_1 = new JLabel("\uCE74\uB4DC\uC815\uBCF4 \uC785\uB825");
-		sl_sec_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 33, SpringLayout.NORTH, sec_panel);
-		sl_sec_panel.putConstraint(SpringLayout.EAST, lblNewLabel_1, -171, SpringLayout.EAST, sec_panel);
+		sl_sec_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 25, SpringLayout.NORTH, sec_panel);
+		sl_sec_panel.putConstraint(SpringLayout.EAST, lblNewLabel_1, -118, SpringLayout.EAST, sec_panel);
 		sec_panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_4 = new JLabel("\uCE74\uB4DC\uC0AC");
@@ -178,8 +194,8 @@ public class MVPayView {
 		
 		JComboBox comboBox_1 = new JComboBox();
 		sl_sec_panel.putConstraint(SpringLayout.NORTH, comboBox_1, -3, SpringLayout.NORTH, lblNewLabel_4);
-		sl_sec_panel.putConstraint(SpringLayout.WEST, comboBox_1, 0, SpringLayout.WEST, lblNewLabel_1);
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"\uAD6D\uBBFC", "\uD604\uB300", "\uC0BC\uC131", "\uB18D\uD611"}));
+		sl_sec_panel.putConstraint(SpringLayout.WEST, comboBox_1, 45, SpringLayout.EAST, lblNewLabel_4);
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"\uAD6D\uBBFC\uCE74\uB4DC", "\uD604\uB300\uCE74\uB4DC", "\uC0BC\uC131\uCE74\uB4DC", "\uB18D\uD611\uCE74\uB4DC"}));
 		sec_panel.add(comboBox_1);
 		
 		textField_1 = new JTextField();
@@ -196,32 +212,68 @@ public class MVPayView {
 		
 		JPanel panel_1 = new JPanel();
 		springLayout.putConstraint(SpringLayout.NORTH, panel_1, 6, SpringLayout.SOUTH, par);
-		springLayout.putConstraint(SpringLayout.WEST, panel_1, -399, SpringLayout.EAST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, 34, SpringLayout.SOUTH, par);
+		springLayout.putConstraint(SpringLayout.WEST, panel_1, -299, SpringLayout.EAST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, -10, SpringLayout.SOUTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, panel_1, -23, SpringLayout.EAST, frame.getContentPane());
 		frame.getContentPane().add(panel_1);
 		SpringLayout sl_panel_1 = new SpringLayout();
 		panel_1.setLayout(sl_panel_1);
 		
 		JButton btnNewButton = new JButton("\uACB0\uC81C \uD655\uC778");
+		sl_panel_1.putConstraint(SpringLayout.NORTH, btnNewButton, 0, SpringLayout.NORTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.EAST, btnNewButton, -88, SpringLayout.EAST, panel_1);
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//클릭 시, 결제완료창을 띄우기
 				JOptionPane.showMessageDialog(null, "결제가 완료되었습니다.", "", JOptionPane.PLAIN_MESSAGE);
+				//DB저장
+				
 				//예매하기 창으로 돌아가기
 				new MVRvView().main(null);
 			}
 		});
-		sl_panel_1.putConstraint(SpringLayout.NORTH, btnNewButton, 0, SpringLayout.NORTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.WEST, btnNewButton, 139, SpringLayout.WEST, panel_1);
 		panel_1.add(btnNewButton);
 		
 		JPanel panel_2 = new JPanel();
 		springLayout.putConstraint(SpringLayout.NORTH, panel_2, 0, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, panel_2, 0, SpringLayout.WEST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, panel_2, 63, SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, panel_2, 433, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_2, 333, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_2);
+		
+		JPanel panel_3 = new JPanel();
+		springLayout.putConstraint(SpringLayout.NORTH, panel_3, 49, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_3, -267, SpringLayout.SOUTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.NORTH, panel, 17, SpringLayout.SOUTH, panel_3);
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_2, -6, SpringLayout.NORTH, panel_3);
+		springLayout.putConstraint(SpringLayout.WEST, panel_3, 10, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_3, 0, SpringLayout.EAST, panel);
+		frame.getContentPane().add(panel_3);
+		SpringLayout sl_panel_3 = new SpringLayout();
+		panel_3.setLayout(sl_panel_3);
+		
+		
+		
+		
+		JLabel lbl_movieName = new JLabel("New label");
+		sl_panel_3.putConstraint(SpringLayout.NORTH, lbl_movieName, 24, SpringLayout.NORTH, panel_3);
+		sl_panel_3.putConstraint(SpringLayout.WEST, lbl_movieName, 35, SpringLayout.WEST, panel_3);
+		panel_3.add(lbl_movieName);
+		
+		JLabel lbl_movieTime = new JLabel("New label");
+		sl_panel_3.putConstraint(SpringLayout.WEST, lbl_movieTime, 0, SpringLayout.WEST, lbl_movieName);
+		sl_panel_3.putConstraint(SpringLayout.SOUTH, lbl_movieTime, -21, SpringLayout.SOUTH, panel_3);
+		panel_3.add(lbl_movieTime);
+		
+		JLabel lbl_total = new JLabel("New label");
+		sl_panel_3.putConstraint(SpringLayout.NORTH, lbl_total, 0, SpringLayout.NORTH, lbl_movieTime);
+		sl_panel_3.putConstraint(SpringLayout.EAST, lbl_total, -30, SpringLayout.EAST, panel_3);
+		panel_3.add(lbl_total);
+		
+		lbl_movieName.setText(movieNm);
+		lbl_movieTime.setText(time);
+		lbl_total.setText(totalPrice+"");
 	}
+	
+
 }
