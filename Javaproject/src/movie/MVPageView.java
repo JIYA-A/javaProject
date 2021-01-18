@@ -20,10 +20,9 @@ import java.awt.event.MouseEvent;
 public class MVPageView {
 
 	private JFrame frame;
-	private JTable table;
-	
 	private DefaultTableModel model; //JTable 데이터 추가, 삭제
 	private int row; //선택한 행의 위치
+	private JTable rv_table;
 	
 	
 	public static void main(String[] args) {
@@ -46,6 +45,7 @@ public class MVPageView {
 
 	
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,12 +76,15 @@ public class MVPageView {
 		//DAO,AO -> list에 넣어 배열로 구성 후 출력
 
 		
-		scrollPane.setViewportView(table);
+		scrollPane.setViewportView(rv_table);
 		
 		JPanel panel_1 = new JPanel();
 		springLayout.putConstraint(SpringLayout.NORTH, panel_1, 21, SpringLayout.SOUTH, scrollPane);
 		springLayout.putConstraint(SpringLayout.WEST, panel_1, 48, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, 56, SpringLayout.SOUTH, scrollPane);
+		
+		rv_table = new JTable();
+		scrollPane.setViewportView(rv_table);
 		springLayout.putConstraint(SpringLayout.EAST, panel_1, 381, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_1);
 		SpringLayout sl_panel_1 = new SpringLayout();
@@ -95,8 +98,8 @@ public class MVPageView {
 		removeBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				model.removeRow(row);
-	      		System.out.println("선택한 행이 삭제되었습니다.");
+				new MVRvView().main(null);
+				frame.dispose();
 			}
 		});
 		sl_panel_1.putConstraint(SpringLayout.SOUTH, removeBtn, -2, SpringLayout.SOUTH, panel_1);
