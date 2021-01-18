@@ -92,20 +92,19 @@ public class PayDAO {
 			// *BookDAO의 selectBookAll()메소드 참고
 
 			// 3.DB에 보낼 Query 작성
-			String sql = "select * from pay";
+			String sql = "select movie,payDate,totalPrice from pay";
 			pst = conn.prepareStatement(sql);
 
 			rs = pst.executeQuery();
 
 			while (rs.next()) {
-				int getPayUid = rs.getInt(1);
-				int getTotalPrice = rs.getInt(2);
-				String getPayDate = rs.getString(3);
-				String getCardNum = rs.getString(4);
-				String getMovieName = rs.getNString(5);
+				String getMovieName = rs.getNString(1);
+				String getPayDate = rs.getString(2);
+				int getTotalPrice = rs.getInt(3);
+				
 				
 
-				list.add(new PayVO(getPayUid, getTotalPrice, getPayDate, getCardNum, getMovieName));
+				list.add(new PayVO( getTotalPrice, getPayDate, getMovieName));
 
 			}
 		} catch (SQLException e) {
