@@ -7,6 +7,14 @@ public class PayVO {
 	private String payDate;
 	private String cardNumber;
 	private String movieName;
+	
+	public PayVO(int totalPrice, String cardNumber, String movieName) {
+		super();
+		this.totalPrice = totalPrice;
+		this.cardNumber = cardNumber;
+		this.movieName = movieName;
+	}
+
 	public PayVO(int totalPrice, String payDate, String cardNumber, String movieName) {
 		super();
 		this.totalPrice = totalPrice;
