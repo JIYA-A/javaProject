@@ -102,7 +102,7 @@ public class MVPayView {
 		springLayout.putConstraint(SpringLayout.SOUTH, par, -44, SpringLayout.SOUTH, frame.getContentPane());
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 
-		JButton btn1 = new JButton("\uACC4\uC88C\uC774\uCCB4");
+		JButton btn1 = new JButton("1");
 		btn1.setBackground(Color.WHITE);
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
