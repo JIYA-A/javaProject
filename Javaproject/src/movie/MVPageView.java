@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.SpringLayout;
 import javax.swing.table.DefaultTableModel;
+
+
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -16,6 +19,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class MVPageView {
 
@@ -45,7 +49,7 @@ public class MVPageView {
 
 	
 	private void initialize() {
-		
+		PayDAO dao = new PayDAO();
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,12 +75,33 @@ public class MVPageView {
 		springLayout.putConstraint(SpringLayout.EAST, scrollPane, -53, SpringLayout.EAST, frame.getContentPane());
 		frame.getContentPane().add(scrollPane);
 		
+		ArrayList<PayVO> rv = dao.selectPayAll();
+		String[] columName = {"영화","시간","총 금액"};
+		String[][] rowDatas = new String[rv.size()][columName.length];
+		for (int i = 0; i < rowDatas.length; i++) { //row
+			for (int j = 0; j < columName.length; j++) {//열
+				if(j==0) {
+					rowDatas[i][j] = rv.get(i).getMovieName();
+				}else if(j==1) {
+					rowDatas[i][j] = rv.get(i).getPayDate();
+				}else{
+					rowDatas[i][j] = rv.get(i).getTotalPrice()+"";
+				}
+			}
+		}
 		
+		
+		
+		model = new DefaultTableModel(rowDatas,columName);
+		
+		//1차원 배열 : 컬럼, 2차원배열 : 데이터
+		rv_table = new JTable(model);
+		scrollPane.setViewportView(rv_table);
 		//JTable 데이터초기화
 		//DAO,AO -> list에 넣어 배열로 구성 후 출력
 		
 		
-		scrollPane.setViewportView(rv_table);
+		
 		
 		JPanel panel_1 = new JPanel();
 		springLayout.putConstraint(SpringLayout.NORTH, panel_1, 21, SpringLayout.SOUTH, scrollPane);
@@ -98,8 +123,7 @@ public class MVPageView {
 		removeBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new MVRvView().main(null);
-				frame.dispose();
+				
 			}
 		});
 		sl_panel_1.putConstraint(SpringLayout.SOUTH, removeBtn, -2, SpringLayout.SOUTH, panel_1);
