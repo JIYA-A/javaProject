@@ -64,8 +64,9 @@ public class MVRoginView{
 		btn_signup.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				new MVSignupView().main(null);
 				frame.dispose();
-				new MVSignupView().main(null);;
 			}
 		});
 		panel.add(btn_signup);
@@ -95,7 +96,9 @@ public class MVRoginView{
 				}else {
 					if(vo.getUserUid() != 0) {
 						JOptionPane.showMessageDialog(null, "Login Successful");
+						new MVRvView().main(null);
 						panel.setVisible(false); // 로그인 성공시 더이상 로그인 패널이 보이지 않음
+						frame.dispose();
 					}else {
 						JOptionPane.showMessageDialog(null, "you failed to log in");
 					}
