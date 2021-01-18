@@ -20,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.awt.Button;
 
 public class MVPageView {
 
@@ -118,8 +119,8 @@ public class MVPageView {
 		panel_1.setLayout(sl_panel_1);
 		
 		JButton removeBtn = new JButton("\uC608\uB9E4\uCDE8\uC18C");
+		sl_panel_1.putConstraint(SpringLayout.WEST, removeBtn, 35, SpringLayout.WEST, panel_1);
 		sl_panel_1.putConstraint(SpringLayout.SOUTH, removeBtn, -2, SpringLayout.SOUTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.EAST, removeBtn, -10, SpringLayout.EAST, panel_1);
 		removeBtn.addActionListener(new ActionListener() {
 	      	public void actionPerformed(ActionEvent e) {
 	      	}
@@ -137,6 +138,22 @@ public class MVPageView {
 			}
 		});
 		panel_1.add(removeBtn);
+		
+		JButton btnreturn = new JButton("\uB4A4\uB85C\uAC00\uAE30");
+		btnreturn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new MVRvView().main(null);	
+			frame.dispose();
+			}
+		});
+		btnreturn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		sl_panel_1.putConstraint(SpringLayout.NORTH, btnreturn, 0, SpringLayout.NORTH, removeBtn);
+		sl_panel_1.putConstraint(SpringLayout.EAST, btnreturn, -28, SpringLayout.EAST, panel_1);
+		panel_1.add(btnreturn);
 		
 		
 	
