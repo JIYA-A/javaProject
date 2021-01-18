@@ -92,7 +92,7 @@ public class PayDAO {
 			// *BookDAO의 selectBookAll()메소드 참고
 
 			// 3.DB에 보낼 Query 작성
-			String sql = "select movie,payDate,totalPrice from pay";
+			String sql = "select movieName,payDate,totalPrice from pay";
 			pst = conn.prepareStatement(sql);
 
 			rs = pst.executeQuery();
