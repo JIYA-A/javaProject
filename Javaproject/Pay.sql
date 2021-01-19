@@ -11,14 +11,14 @@ alter table pay add constraint pay_seatUid_fk
 foreign key (seatUid) references seat (seatUid);
 
 
+alater table pay
+drop column payMethod;
+
 alter table pay 
 modify (payDate date); 
  
-
-
 alter table pay
 add movieName varchar2(40);
-
 
 
 alter table pay
@@ -27,10 +27,6 @@ add constraint pay_userUid_fk foreign key
 alter table pay 
 add constraint pay_seatUid_fk foreign key 
 (seatUid) references seat(seatUid);
-
-
-
-
 
 
 

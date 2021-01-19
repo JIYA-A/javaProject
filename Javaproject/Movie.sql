@@ -1,3 +1,4 @@
+delete from movie;
 create table movie
 (movieUid number primary key,
 movieTitle varchar2(40),
@@ -24,6 +25,5 @@ VALUES (movie_Uid.NEXTVAL,'脚苞窃膊-了客国', '11:00');
 
 INSERT INTO movie 
 VALUES (movie_Uid.NEXTVAL,'脚苞窃膊-了客国', '12:30');
-
 
 select * from movie;

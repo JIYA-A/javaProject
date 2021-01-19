@@ -115,6 +115,38 @@ public class SeatDAO {
 
 	}
 
+	public String one(int i) {
+
+		String A = "A";
+		String B = "B";
+		String C = "C";
+		String D = "D";
+		String E = "E";
+
+		switch (i) {
+		case 1:
+			return A;
+			
+		case 2:
+			return B;
+			
+		case 3:
+			return C;
+		
+		case 4:
+			return D;
+		
+		case 5:
+			return E;
+			
+
+		default:
+			return "";
+		}
+	}
+
+	
+
 	public void deleteSeat(int selectSeatUid) {
 		try {
 
@@ -134,6 +166,5 @@ public class SeatDAO {
 			close();
 		} // end try~catch!finally
 	}
-
 
 }
