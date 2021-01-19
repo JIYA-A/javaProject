@@ -64,10 +64,10 @@ public class MVPayView {
 	/**
 	 * Create the application.
 	 */
-	public MVPayView() {
-		initialize();
-	}
-	
+//	public MVPayView() {
+//		initialize();
+//	}
+//	
 	public MVPayView(String movieNm, String time, int totalPrice, int user_Uid) {
 		this.movieNm = movieNm;
 		this.time = time;
@@ -269,7 +269,7 @@ public class MVPayView {
 				dao.addPay(new PayVO(totalPrice, cardNumber, movieNm,user_Uid));
 				
 				// 예매하기 창으로 돌아가기
-				new MVRvView().main(user_Uid);	
+				MVRvView.main(user_Uid);	
 				frame.dispose();
 			}
 		});
