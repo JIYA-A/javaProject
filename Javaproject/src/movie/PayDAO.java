@@ -70,7 +70,9 @@ public class PayDAO {
 			pst.setString(2, vo.getCardNumber());
 			pst.setString(3, vo.getMovieName());
 			pst.setInt(4, vo.getUser_Uid());
-			pst.setInt(5, 1);
+			pst.setInt(5, vo.getSeat_Uid());
+		
+			
 			
 
 			pst.executeUpdate(); // sql문장 실행
@@ -83,7 +85,7 @@ public class PayDAO {
 
 	}// addContact 마지막줄
 
-	public ArrayList<PayVO> selectPayAll() {
+	public ArrayList<PayVO> selectPayAll(int user_Uid) {
 		ArrayList<PayVO> list = new ArrayList<PayVO>();
 
 		try {
@@ -93,20 +95,21 @@ public class PayDAO {
 			// *BookDAO의 selectBookAll()메소드 참고
 
 			// 3.DB에 보낼 Query 작성
-			String sql = "select movieName,payDate,totalPrice from pay";
+			String sql = "select movieName,payDate,totalPrice,payUid from pay where userUid = ?";
 			pst = conn.prepareStatement(sql);
-
+			pst.setInt(1, user_Uid);
 			rs = pst.executeQuery();
 
 			while (rs.next()) {
 				String getMovieName = rs.getString(1);
 				String getPayDate = rs.getString(2);
 				int getTotalPrice = rs.getInt(3);
+				int getpayUid = rs.getInt(4);
 			
 				
 				
 
-				list.add(new PayVO(getMovieName,  getPayDate,getTotalPrice));
+				list.add(new PayVO(getMovieName,  getPayDate,getTotalPrice,getpayUid));
 
 			}
 		} catch (SQLException e) {
@@ -122,7 +125,7 @@ public class PayDAO {
 
 	}
 
-	public void deletePay(int selectUid) {
+	public void deletePay(int payUid) {
 		try {
 
 			connection();
@@ -130,7 +133,7 @@ public class PayDAO {
 			// 3. DB에 보낼 Query문 작성
 			String sql = "delete from pay where payUid = ?";
 			pst = conn.prepareStatement(sql);
-			pst.setInt(1, selectUid);
+			pst.setInt(1, payUid);
 
 			// 4. Query 실행
 			pst.executeUpdate();
@@ -140,6 +143,25 @@ public class PayDAO {
 		} finally {
 			close();
 		} // end try~catch!finally
+	}
+
+	public void deleteseatrv(int value) {
+		try {
+
+			connection();
+
+			// 3. DB에 보낼 Query문 작성
+			String sql = "update seat set isSeatRsv = 0 where seatUid =( select seatUid from pay where payUid = ?)";
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, value);
+			// 4. Query 실행
+			pst.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}		
 	}
 	
 

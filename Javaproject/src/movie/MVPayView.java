@@ -44,16 +44,17 @@ public class MVPayView {
 	public int totalPrice;
 	public int user_Uid;
 	public int movie_Uid;
+	public int seat_Uid;
 	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String movieNm, String time, int totalPrice, int user_Uid,int movie_Uid) {
+	public static void main(String movieNm, String time, int totalPrice, int user_Uid,int movie_Uid,int seat_Uid) {
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MVPayView window = new MVPayView(movieNm, time, totalPrice,user_Uid,movie_Uid);
+					MVPayView window = new MVPayView(movieNm, time, totalPrice,user_Uid,movie_Uid,seat_Uid);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -69,12 +70,13 @@ public class MVPayView {
 //		initialize();
 //	}
 //	
-	public MVPayView(String movieNm, String time, int totalPrice, int user_Uid,int movie_Uid) {
+	public MVPayView(String movieNm, String time, int totalPrice, int user_Uid,int movie_Uid,int seat_Uid) {
 		this.movieNm = movieNm;
 		this.time = time;
 		this.totalPrice = totalPrice;
 		this.user_Uid = user_Uid;
 		this.movie_Uid = movie_Uid;
+		this.seat_Uid = seat_Uid;
 		initialize();
 	}
 
@@ -268,7 +270,7 @@ public class MVPayView {
 				
 				String cardNumber = textCardNumber.getText();
 				
-				dao.addPay(new PayVO(totalPrice, cardNumber, movieNm,user_Uid));
+				dao.addPay(new PayVO(totalPrice, cardNumber, movieNm, user_Uid,seat_Uid));
 				
 				// 예매하기 창으로 돌아가기
 				MVRvView.main(user_Uid);	

@@ -34,7 +34,7 @@ public class MVSeatView {
 	private int seatrv;
 
 	private String seat_name;
-	
+	private int left;
 	public int movie_Uid;
 	private int num;
 	private int count = 0;
@@ -169,15 +169,14 @@ public class MVSeatView {
 				final int row = i;
 				final int col = j;
 
-				String row_1 = dao.one(row);
-				seat_name = row_1 + col;
+				//String row_1 = dao.one(row);
+				//seat_name = row_1 + col;
 				
 				//time과 자리로 seatUid를 가져오기
 				
 				
 				
-					seat_Uid = dao.selectSeatUid(seat_name,movie_Uid);
-					seatrv = dao.selectSetrv(seat_name, movie_Uid);
+					
 				
 				
 				ImageIcon seat_icon = new ImageIcon("imgs/sseat.jpg");
@@ -187,15 +186,21 @@ public class MVSeatView {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						System.out.println(row + "," + col);
-
+						String row_1 = dao.one(row);
+						int col_1 = col+1;
+						seat_name = row_1 + col_1;
+						seat_Uid = dao.selectSeatUid(seat_name,movie_Uid);
+						seatrv = dao.selectSetrv(seat_name, movie_Uid);
 						// type이 boolean이면 앞에 !을 붙이면 해당 값의 반대라는 의미 true면 false, false면 true 일종의 스위치 처럼
 						// 작동함
-
+						
 						if (seatrv == 0) {
 							// 색깔 바꿈 ON
 							buttons[row][col].setIcon(seatrv_icon);
 							count++;
 							dao.seatRvChange(seat_name,movie_Uid);
+							seatrv = dao.selectSetrv(seat_name, movie_Uid);
+							System.out.println(seatrv);
 						} else {
 							// 색깔 바꿈 OFF
 							buttons[row][col].setIcon(seat_icon);
@@ -294,7 +299,7 @@ public class MVSeatView {
 				System.out.println("합계 : " + sum);
 				totalPrice = value1 * 10000 + value2 * 8000 + value3 * 5000;
 				if (sum == count) {
-					MVPayView.main(movieNm, time, totalPrice, user_Uid,movie_Uid);
+					MVPayView.main(movieNm, time, totalPrice, user_Uid,movie_Uid,seat_Uid);
 					frame.dispose();
 				} else if (count > sum) {
 					JOptionPane.showMessageDialog(null, "선택한 인원보다 많습니다.", "", JOptionPane.PLAIN_MESSAGE);
@@ -309,14 +314,16 @@ public class MVSeatView {
 		});
 		panel.add(btnNewButton_30);
 
-		JLabel lblNewLabel_4 = new JLabel("\uB0A8\uC740 \uC790\uC11D");
+		JLabel lblNewLabel_4 = new JLabel("\uB0A8\uC740 \uC88C\uC11D");
 		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_4, 0, SpringLayout.WEST, comboBox);
 		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel_4, -101, SpringLayout.SOUTH, panel);
 		panel.add(lblNewLabel_4);
-
-		JLabel lblNewLabel_5 = new JLabel("New label");
-		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_5, 6, SpringLayout.SOUTH, lblNewLabel_4);
-		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_5, 0, SpringLayout.WEST, comboBox);
-		panel.add(lblNewLabel_5);
+		left = dao.rvseat();
+		JLabel leftseat = new JLabel("New label");
+		sl_panel.putConstraint(SpringLayout.NORTH, leftseat, 6, SpringLayout.SOUTH, lblNewLabel_4);
+		sl_panel.putConstraint(SpringLayout.WEST, leftseat, 0, SpringLayout.WEST, comboBox);
+		panel.add(leftseat);
+		
+		leftseat.setText((30-left)+"명");
 	}
 }

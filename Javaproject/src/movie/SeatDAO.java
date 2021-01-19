@@ -126,19 +126,19 @@ public class SeatDAO {
 		String E = "E";
 
 		switch (i) {
-		case 1:
+		case 0:
 			return A;
 			
-		case 2:
+		case 1:
 			return B;
 			
-		case 3:
+		case 2:
 			return C;
 		
-		case 4:
+		case 3:
 			return D;
 		
-		case 5:
+		case 4:
 			return E;
 			
 
@@ -176,13 +176,14 @@ public class SeatDAO {
 			connection();
 
 			// 3. DB에 보낼 Query문 작성
-			String sql = "update seat set isSeatRsv = 1 where seatName = ?and movieUid =?";
+			String sql = "update seat set isSeatRsv = 1 where seatName = ? and movieUid =?";
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, seat_name);
 			pst.setInt(2, movie_Uid);
 			// 4. Query 실행
 			pst.executeUpdate();
-
+			System.out.println("실행되었습니다.");
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -197,7 +198,7 @@ public class SeatDAO {
 			connection();
 
 			// 3. DB에 보낼 Query문 작성
-			String sql = "update seat set isSeatRsv = 0 where seatName = ?and movieUid =?";
+			String sql = "update seat set isSeatRsv = 0 where seatName = ? and movieUid =?";
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, seat_name);
 			pst.setInt(2, movie_Uid);
@@ -227,8 +228,8 @@ public class SeatDAO {
 
 	         // 5.ResultSet객체에 저장된 DB 정보 가져오기
 	         if (rs.next()) {
-					int getuid = rs.getInt(1);
-					return getuid;
+					int getrv = rs.getInt(1);
+					return getrv;
 
 					// 리스트에 회원정보저장
 					
@@ -280,6 +281,38 @@ public class SeatDAO {
 	         }
 		
 		
+		
+		return 0;
+	}
+	public  int rvseat() {
+		try {
+	         connection();
+	         String sql = "select count(isSeatRsv) from seat where isSeatRsv = 1  ";
+	      
+	         pst = conn.prepareStatement(sql);
+	         //pst.setInt(1, movie_Uid);
+	         // 4.Query 실행
+	         // DB에 저장된 정보를 ResultSet 객체에 저장
+	         rs = pst.executeQuery();
+
+	         // 5.ResultSet객체에 저장된 DB 정보 가져오기
+	         if (rs.next()) {
+					int getrv = rs.getInt(1);
+					return getrv;
+
+					// 리스트에 회원정보저장
+					
+				}
+		}
+
+	       catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {// try~catch문과는 상관없이 무조건 실행하는 구문
+
+	         // 6. DB관련 연결개체 종료
+	         // -> 종료하지 않을 경우 연결된 객체들이 쌓이게 되면서 DB연결에 문제가 발생
+	         close();
+	         }
 		
 		return 0;
 	}

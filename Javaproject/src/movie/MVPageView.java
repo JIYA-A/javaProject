@@ -30,8 +30,11 @@ public class MVPageView {
 	private JFrame frame;
 	private DefaultTableModel model; //JTable 데이터 추가, 삭제
 	private int row; //선택한 행의 위치
+	private int column;
+	private int value;
 	private JTable rv_table;
 	public int user_Uid;
+	
 	
 	public static void main(int user_Uid) {
 		EventQueue.invokeLater(new Runnable() {
@@ -52,6 +55,7 @@ public class MVPageView {
 	}
 	public MVPageView(int user_Uid) {
 		this.user_Uid = user_Uid;
+		
 		
 		initialize();
 	}
@@ -90,8 +94,8 @@ public class MVPageView {
 		frame.getContentPane().add(scrollPane);
 		//예매내역확인
 		
-		ArrayList<PayVO> rv = dao.selectPayAll();
-		String[] columName = {"영화","시간","총 금액"};
+		ArrayList<PayVO> rv = dao.selectPayAll(user_Uid);
+		String[] columName = {"영화","시간","총 금액","예약번호"};
 		String[][] rowDatas = new String[rv.size()][columName.length];
 		for (int i = 0; i < rowDatas.length; i++) { //row
 			for (int j = 0; j < columName.length; j++) {//열
@@ -99,8 +103,10 @@ public class MVPageView {
 					rowDatas[i][j] = rv.get(i).getMovieName();
 				}else if(j==1) {
 					rowDatas[i][j] = rv.get(i).getPayDate();
-				}else{
+				}else if(j==2){
 					rowDatas[i][j] = rv.get(i).getTotalPrice()+"";
+				}else {
+					rowDatas[i][j] = rv.get(i).getPayUid()+"";
 				}
 			}
 		}
@@ -139,10 +145,15 @@ public class MVPageView {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//선택한거 지우기
-				row = rv_table.getSelectedRow();
+				row = rv_table.getSelectedRow();//선택하면 정보가져오기
+				column = rv_table.getSelectedColumn();
+				 value =  Integer.valueOf((String) rv_table.getValueAt(row, column)) ;
+System.out.println(value);
+				System.out.println(row);
 				if(row>=0&&row<rv_table.getRowCount()) {
 					model.removeRow(row);
-					dao.deletePay(row-1);
+					dao.deleteseatrv(value);
+					dao.deletePay(value);
 				}
 				
 			}
