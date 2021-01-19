@@ -106,9 +106,10 @@ public class MVPayView {
 		springLayout.putConstraint(SpringLayout.EAST, par, 323, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, par, -44, SpringLayout.SOUTH, frame.getContentPane());
 
-		ImageIcon card_icon = new ImageIcon("imgs/ccard.jpg");
+//		ImageIcon card_icon = new ImageIcon("imgs/ccard.jpg");
 		JButton btn1 = new JButton(new ImageIcon("C:\\Users\\Chosun\\Documents\\\uCE74\uCE74\uC624\uD1A1 \uBC1B\uC740 \uD30C\uC77C\\KakaoTalk_20210119_083401860.png"));
-
+//		panel.setLayout(new GridLayout(1, 0, 0, 0));
+//		JButton btn1 = new JButton("1");
 		btn1.setBackground(Color.WHITE);
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
