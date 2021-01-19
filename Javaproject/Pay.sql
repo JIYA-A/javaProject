@@ -15,15 +15,18 @@ alter table pay
 modify (payDate date); 
  
 
-ALTER TABLE pay
-DROP COLUMN payMethod;
-ALTER TABLE pay
-DROP COLUMN userUid;
-ALTER TABLE pay
-DROP COLUMN seatUid;
 
 alter table pay
 add movieName varchar2(40);
+
+
+
+alter table pay
+add constraint pay_userUid_fk foreign key 
+(userUid) references customer(userUid);
+alter table pay 
+add constraint pay_seatUid_fk foreign key 
+(seatUid) references seat(seatUid);
 
 
 

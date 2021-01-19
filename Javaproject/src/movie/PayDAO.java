@@ -103,7 +103,7 @@ public class PayDAO {
 				
 				
 
-				list.add(new PayVO( getTotalPrice, getPayDate, getMovieName));
+				list.add(new PayVO(getMovieName,  getPayDate,getTotalPrice));
 
 			}
 		} catch (SQLException e) {

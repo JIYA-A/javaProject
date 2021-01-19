@@ -10,3 +10,8 @@ add constraint seat_movieUid_fk foreign key
 (movieUid) references movie(movieUid);
 
 create sequence seat_UId start with 1 increment by 1;
+
+
+
+alter table seat 
+modify (isSeatRsv number); 

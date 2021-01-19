@@ -85,6 +85,7 @@ public class MVPageView {
 		springLayout.putConstraint(SpringLayout.EAST, scrollPane, -53, SpringLayout.EAST, frame.getContentPane());
 		frame.getContentPane().add(scrollPane);
 		//예매내역확인
+		
 		ArrayList<PayVO> rv = dao.selectPayAll();
 		String[] columName = {"영화","시간","총 금액"};
 		String[][] rowDatas = new String[rv.size()][columName.length];
@@ -103,13 +104,8 @@ public class MVPageView {
 		
 		
 		model = new DefaultTableModel(rowDatas,columName);
-		
-		//1차원 배열 : 컬럼, 2차원배열 : 데이터
-		rv_table = new JTable(model);
-		scrollPane.setViewportView(rv_table);
 		//JTable 데이터초기화
 		//DAO,AO -> list에 넣어 배열로 구성 후 출력
-		
 		
 		
 		
@@ -121,6 +117,7 @@ public class MVPageView {
 		
 		rv_table = new JTable();
 		scrollPane.setViewportView(rv_table);
+		
 		springLayout.putConstraint(SpringLayout.EAST, panel_1, 381, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_1);
 		SpringLayout sl_panel_1 = new SpringLayout();
