@@ -10,11 +10,9 @@ seatUid number
 alter table pay add constraint pay_seatUid_fk
 foreign key (seatUid) references seat (seatUid);
 
-alter table pay 
-modify (payDate date); 
 
 alter table pay 
-modify (payDate varchar2(80)); 
+modify (payDate date); 
  
 
 ALTER TABLE pay

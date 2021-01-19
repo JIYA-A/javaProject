@@ -63,13 +63,12 @@ public class PayDAO {
 
 		connection(); // DB연결
 
-		String sql = "insert into pay values(pay_payUid.nextval,?,?,?,?)";
+		String sql = "insert into pay values(pay_Uid.nextval,?,sysdate,?,?)";
 		try {
 			pst = conn.prepareStatement(sql);
-			pst.setInt(2, vo.getTotalPrice());
-			pst.setString(3, vo.getPayDate());
-			pst.setString(4, vo.getCardNumber());
-			pst.setNString(5, vo.getMovieName());
+			pst.setInt(1, vo.getTotalPrice());
+			pst.setString(2, vo.getCardNumber());
+			pst.setString(3, vo.getMovieName());
 			
 
 			pst.executeUpdate(); // sql문장 실행
