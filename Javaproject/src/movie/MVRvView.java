@@ -314,6 +314,23 @@ public class MVRvView {
 			}
 		});
 		panel_1.add(btnNewButton_1);
+		
+		ImageIcon mmovie_icon = new ImageIcon("imgs/mmovie.png");
+		JLabel lblNewLabel = new JLabel(mmovie_icon);
+		sl_panel_1.putConstraint(SpringLayout.NORTH, lblNewLabel, -18, SpringLayout.NORTH, btnNewButton);
+		sl_panel_1.putConstraint(SpringLayout.WEST, lblNewLabel, 10, SpringLayout.WEST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, lblNewLabel, -6, SpringLayout.NORTH, panel_2);
+		sl_panel_1.putConstraint(SpringLayout.EAST, lblNewLabel, 123, SpringLayout.WEST, panel_1);
+		panel_1.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("\uC601\uD654 \uC608\uB9E4");
+		lblNewLabel_1.setForeground(new Color(0, 0, 0));
+		sl_panel_1.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 0, SpringLayout.NORTH, lblNewLabel);
+		sl_panel_1.putConstraint(SpringLayout.WEST, lblNewLabel_1, 6, SpringLayout.EAST, lblNewLabel);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, lblNewLabel_1, -6, SpringLayout.NORTH, panel_2);
+		sl_panel_1.putConstraint(SpringLayout.EAST, lblNewLabel_1, -302, SpringLayout.WEST, btnNewButton);
+		lblNewLabel_1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
+		panel_1.add(lblNewLabel_1);
 	}
 
 	private void add(JPanel panel_5) {
