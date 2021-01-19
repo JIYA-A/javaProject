@@ -26,4 +26,6 @@ VALUES (movie_Uid.NEXTVAL,'脚苞窃膊-了客国', '11:00');
 INSERT INTO movie 
 VALUES (movie_Uid.NEXTVAL,'脚苞窃膊-了客国', '12:30');
 
+select movieUid from movie where movieTitle ='疙樊' and movieTime='9:30'
+
 select * from movie;

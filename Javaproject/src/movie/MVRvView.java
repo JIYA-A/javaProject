@@ -1,28 +1,24 @@
 package movie;
 
-import java.awt.EventQueue;
-import java.awt.Graphics;
-import java.awt.Image;
-
-import javax.swing.JFrame;
-import javax.swing.SpringLayout;
-import javax.swing.JPanel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.CardLayout;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.Icon;
-import java.awt.Font;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SpringLayout;
 
 public class MVRvView {
 	//어ㅏ어ㅏ리
@@ -31,7 +27,8 @@ public class MVRvView {
    private JPanel first_panel, second_panel;
    public String movieNm;
    public String time;
-public int user_Uid;
+   public int user_Uid;
+   public int movie_Uid;
 
 	public static void main(int user_Uid) {
       EventQueue.invokeLater(new Runnable() {
@@ -55,7 +52,8 @@ public int user_Uid;
 		initialize();
 	}
    private void initialize() {
-	  
+	  MovieDAO dao = new MovieDAO();
+	   
 	  JCheckBox Ch1 = new JCheckBox("\uC624\uC804 10:30");
 	  Ch1.setForeground(Color.WHITE);
 	  Ch1.setOpaque(false);
@@ -153,7 +151,7 @@ public int user_Uid;
       		if(Ch1.isSelected() == true || Ch2.isSelected() == true || Ch3.isSelected() == true || 
  				   Ch4.isSelected() == true || Ch5.isSelected() == true || Ch6.isSelected() == true || Ch7.isSelected() == true || Ch8.isSelected() == true) {
  					
- 					MVSeatView.main(movieNm, time,user_Uid);
+ 					MVSeatView.main(movieNm, time,user_Uid,movie_Uid);
  					frame.dispose();
  				}else {
  					JOptionPane.showMessageDialog(null, "체크박스를 눌러주세요!");
@@ -176,8 +174,8 @@ public int user_Uid;
       btn_my1.addMouseListener(new MouseAdapter() {
       	@Override
       	public void mouseClicked(MouseEvent e) {
+      		
       		MVPageView.main(user_Uid);
-
 			frame.dispose();
       	}
       });
@@ -216,8 +214,9 @@ public int user_Uid;
       	@Override
       	public void mouseClicked(MouseEvent e) {
       		movieNm = "극한직업";
-			time = "오전 :30";
-
+			time = "10:30";
+			movie_Uid  = dao.selectMovieUid(movieNm,time);
+			 System.out.println(movie_Uid);
 			Ch2.setSelected(false);
 			Ch3.setSelected(false);
 			Ch4.setSelected(false);
@@ -236,8 +235,9 @@ public int user_Uid;
       	@Override
       	public void mouseClicked(MouseEvent e) {
       		movieNm = "극한직업";
-			time = "오후 14:30";
-
+			time = "14:30";
+			movie_Uid  = dao.selectMovieUid(movieNm,time);
+			 System.out.println(movie_Uid);
 			Ch1.setSelected(false);
 			Ch3.setSelected(false);
 			Ch4.setSelected(false);
@@ -271,8 +271,9 @@ public int user_Uid;
       	@Override
       	public void mouseClicked(MouseEvent e) {
       		movieNm = "신과함께-죄와벌";
-			time = "오전 11:00";
-
+			time = "11:00";
+			 movie_Uid  = dao.selectMovieUid(movieNm,time);
+			 System.out.println(movie_Uid);
 			Ch1.setSelected(false);
 			Ch2.setSelected(false);
 			Ch4.setSelected(false);
@@ -290,8 +291,9 @@ public int user_Uid;
       	@Override
       	public void mouseClicked(MouseEvent e) {
       		movieNm = "신과함께-죄와벌";
-			time = "오전 12:30";
-
+			time = "12:30";
+			movie_Uid  = dao.selectMovieUid(movieNm,time);
+			 System.out.println(movie_Uid);
 			Ch1.setSelected(false);
 			Ch2.setSelected(false);
 			Ch3.setSelected(false);
@@ -402,7 +404,7 @@ public int user_Uid;
   		if(Ch1.isSelected() == true || Ch2.isSelected() == true || Ch3.isSelected() == true || 
 				   Ch4.isSelected() == true || Ch5.isSelected() == true || Ch6.isSelected() == true || Ch7.isSelected() == true || Ch8.isSelected() == true) {
 					
-					MVSeatView.main(movieNm, time,user_Uid);
+					MVSeatView.main(movieNm, time,user_Uid,movie_Uid);
 					frame.dispose();
 				}else {
 					JOptionPane.showMessageDialog(null, "체크박스를 눌러주세요!");
@@ -447,7 +449,8 @@ public int user_Uid;
       	public void mouseClicked(MouseEvent e) {
       		movieNm = "명량";
 			time = "오전 09:30";
-
+			movie_Uid  = dao.selectMovieUid(movieNm,time);
+			 System.out.println(movie_Uid);
 			Ch1.setSelected(false);
 			Ch2.setSelected(false);
 			Ch3.setSelected(false);
@@ -466,7 +469,9 @@ public int user_Uid;
       	@Override
       	public void mouseClicked(MouseEvent e) {
       		movieNm = "명량";
-			time = "오전 13:30";
+			time = "14:30";
+			movie_Uid  = dao.selectMovieUid(movieNm,time);
+			 System.out.println(movie_Uid);
 
 			Ch1.setSelected(false);
 			Ch2.setSelected(false);
@@ -499,7 +504,8 @@ public int user_Uid;
       	public void mouseClicked(MouseEvent e) {
       		movieNm = "조커";
 			time = "오전 11:40";
-
+			movie_Uid  = dao.selectMovieUid(movieNm,time);
+			 System.out.println(movie_Uid); 
 			Ch1.setSelected(false);
 			Ch2.setSelected(false);
 			Ch3.setSelected(false);
@@ -515,9 +521,10 @@ public int user_Uid;
       Ch8.addMouseListener(new MouseAdapter() {
       	@Override
       	public void mouseClicked(MouseEvent e) {
-      		movieNm = "명량";
+      		movieNm = "조커";
 			time = "오후 15:45";
-
+			movie_Uid  = dao.selectMovieUid(movieNm,time);
+			 System.out.println(movie_Uid);
 			Ch1.setSelected(false);
 			Ch2.setSelected(false);
 			Ch3.setSelected(false);

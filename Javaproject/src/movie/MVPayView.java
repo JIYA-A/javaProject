@@ -43,16 +43,17 @@ public class MVPayView {
 	public String time;
 	public int totalPrice;
 	public int user_Uid;
+	public int movie_Uid;
 	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String movieNm, String time, int totalPrice, int user_Uid) {
+	public static void main(String movieNm, String time, int totalPrice, int user_Uid,int movie_Uid) {
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MVPayView window = new MVPayView(movieNm, time, totalPrice,user_Uid);
+					MVPayView window = new MVPayView(movieNm, time, totalPrice,user_Uid,movie_Uid);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -68,11 +69,12 @@ public class MVPayView {
 //		initialize();
 //	}
 //	
-	public MVPayView(String movieNm, String time, int totalPrice, int user_Uid) {
+	public MVPayView(String movieNm, String time, int totalPrice, int user_Uid,int movie_Uid) {
 		this.movieNm = movieNm;
 		this.time = time;
 		this.totalPrice = totalPrice;
 		this.user_Uid = user_Uid;
+		this.movie_Uid = movie_Uid;
 		initialize();
 	}
 

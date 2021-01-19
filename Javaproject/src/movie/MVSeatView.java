@@ -35,18 +35,18 @@ public class MVSeatView {
 
 	private String seat_name;
 	
-	private int movie_Uid;
+	public int movie_Uid;
 	private int num;
 	private int count = 0;
 	private int value1 = 0;
 	private int value2 = 0;
 	private int value3 = 0;
 
-	public static void main(String movieNm, String time, int user_Uid) {
+	public static void main(String movieNm, String time, int user_Uid,int movie_Uid) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MVSeatView window = new MVSeatView(movieNm, time, user_Uid);
+					MVSeatView window = new MVSeatView(movieNm, time, user_Uid,movie_Uid);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,10 +55,11 @@ public class MVSeatView {
 		});
 	}
 
-	public MVSeatView(String movieNm, String time, int user_Uid) {
+	public MVSeatView(String movieNm, String time, int user_Uid,int movie_Uid) {
 		this.movieNm = movieNm;
 		this.time = time;
 		this.user_Uid = user_Uid;
+		this.movie_Uid = movie_Uid;
 		initialize();
 	}
 
@@ -155,13 +156,13 @@ public class MVSeatView {
 
 		// JButton 생성
 		buttons = new JButton[5][6];
-		boolean[][] buttonCheck = new boolean[5][6]; // boolean 타입으로 선언
-		for (int i = 0; i < buttons.length; i++) {
-			for (int j = 0; j < buttons[i].length; j++) {
-				buttonCheck[i][j] = false;
+		//boolean[][] buttonCheck = new boolean[5][6]; // boolean 타입으로 선언
+		//for (int i = 0; i < buttons.length; i++) {
+			//for (int j = 0; j < buttons[i].length; j++) {
+				//buttonCheck[i][j] = false;
 				// 초기값으로 모두 false(버튼을 누르지 않은 상태)
-			}
-		}
+			//}
+		//}
 
 		for (int i = 0; i < buttons.length; i++) {
 			for (int j = 0; j < buttons[i].length; j++) {
@@ -170,46 +171,13 @@ public class MVSeatView {
 
 				String row_1 = dao.one(row);
 				seat_name = row_1 + col;
-				switch (movieNm) {
-				case "명량":
-					if (time == "9:30") {
-
-						movie_Uid = 1;
-						break;
-					} else if (time == "13:30") {
-						movie_Uid = 2;
-						break;
-					}
-
-				case "극한직업":
-					if (time == "10:30") {
-
-						movie_Uid = 3;
-						break;
-					} else if (time == "14:30") {
-						movie_Uid = 4;
-						break;
-					}
-				case "신과함께-죄와벌":
-					if (time == "11:00") {
-
-						movie_Uid = 5;
-						break;
-					} else if (time == "12:30") {
-						movie_Uid = 6;
-						break;
-					}
-
-				default:
-					break;
-				}
+				
 				//time과 자리로 seatUid를 가져오기
 				
-				ArrayList<SeatVO> seats =dao.selectSeatAll(seat_name,movie_Uid);
 				
 				
-					seat_Uid = seats.get(1).getSeatUid();
-					seatrv = seats.get(1).getIsSeatRsv();
+					seat_Uid = dao.selectSeatUid(seat_name,movie_Uid);
+					seatrv = dao.selectSetrv(seat_name, movie_Uid);
 				
 				
 				ImageIcon seat_icon = new ImageIcon("imgs/sseat.jpg");
@@ -326,7 +294,7 @@ public class MVSeatView {
 				System.out.println("합계 : " + sum);
 				totalPrice = value1 * 10000 + value2 * 8000 + value3 * 5000;
 				if (sum == count) {
-					MVPayView.main(movieNm, time, totalPrice, user_Uid);
+					MVPayView.main(movieNm, time, totalPrice, user_Uid,movie_Uid);
 					frame.dispose();
 				} else if (count > sum) {
 					JOptionPane.showMessageDialog(null, "선택한 인원보다 많습니다.", "", JOptionPane.PLAIN_MESSAGE);
