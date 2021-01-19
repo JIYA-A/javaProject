@@ -106,8 +106,9 @@ public class MVPayView {
 		springLayout.putConstraint(SpringLayout.EAST, par, 323, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, par, -44, SpringLayout.SOUTH, frame.getContentPane());
 
-//		ImageIcon card_icon = new ImageIcon("imgs/ccard.jpg");
-		JButton btn1 = new JButton(new ImageIcon("C:\\Users\\Chosun\\Documents\\\uCE74\uCE74\uC624\uD1A1 \uBC1B\uC740 \uD30C\uC77C\\KakaoTalk_20210119_083401860.png"));
+		ImageIcon bbank_icon = new ImageIcon("imgs/bbank.png");
+		JButton btn1 = new JButton(bbank_icon);
+//		JButton btn1 = new JButton(new ImageIcon("C:\\Users\\Chosun\\Documents\\\uCE74\uCE74\uC624\uD1A1 \uBC1B\uC740 \uD30C\uC77C\\KakaoTalk_20210119_083401860.png"));
 //		panel.setLayout(new GridLayout(1, 0, 0, 0));
 //		JButton btn1 = new JButton("1");
 		btn1.setBackground(Color.WHITE);
@@ -132,8 +133,9 @@ public class MVPayView {
 		sl_panel.putConstraint(SpringLayout.EAST, btn1, 147, SpringLayout.WEST, panel);
 		panel.setLayout(sl_panel);
 		panel.add(btn1);
-
-		JButton btn2 = new JButton("");
+		
+		ImageIcon cccard_icon = new ImageIcon("imgs/cccard.png");
+		JButton btn2 = new JButton(cccard_icon);
 		sl_panel.putConstraint(SpringLayout.NORTH, btn2, 0, SpringLayout.NORTH, btn1);
 		sl_panel.putConstraint(SpringLayout.WEST, btn2, 6, SpringLayout.EAST, btn1);
 		sl_panel.putConstraint(SpringLayout.SOUTH, btn2, 0, SpringLayout.SOUTH, btn1);
@@ -142,7 +144,7 @@ public class MVPayView {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btn2.setIcon(new ImageIcon("C:\\Users\\Chosun\\Documents\\\uCE74\uCE74\uC624\uD1A1 \uBC1B\uC740 \uD30C\uC77C\\KakaoTalk_20210119_083401681.png"));
+//		btn2.setIcon(new ImageIcon("C:\\Users\\Chosun\\Documents\\\uCE74\uCE74\uC624\uD1A1 \uBC1B\uC740 \uD30C\uC77C\\KakaoTalk_20210119_083401681.png"));
 		btn2.setBackground(Color.WHITE);
 		btn2.addMouseListener(new MouseAdapter() {
 			@Override
