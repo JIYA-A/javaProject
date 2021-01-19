@@ -20,6 +20,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.Font;
 
 public class MVSeatView {
 
@@ -68,46 +69,83 @@ public class MVSeatView {
 		frame.getContentPane().setLayout(springLayout);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.WHITE);
 		springLayout.putConstraint(SpringLayout.NORTH, panel, 10, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, panel, 10, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel, -10, SpringLayout.SOUTH, frame.getContentPane());
+		panel.setBackground(Color.WHITE);
 		frame.getContentPane().add(panel);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.WHITE);
 		springLayout.putConstraint(SpringLayout.EAST, panel, -6, SpringLayout.WEST, panel_1);
-		springLayout.putConstraint(SpringLayout.NORTH, panel_1, 0, SpringLayout.NORTH, panel);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_1, 10, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, 0, SpringLayout.SOUTH, panel);
+		panel_1.setBackground(Color.WHITE);
 		springLayout.putConstraint(SpringLayout.WEST, panel_1, 209, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, panel_1, -10, SpringLayout.EAST, frame.getContentPane());
 		frame.getContentPane().add(panel_1);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(Color.WHITE);
-		springLayout.putConstraint(SpringLayout.WEST, panel_2, 6, SpringLayout.EAST, panel);
-		springLayout.putConstraint(SpringLayout.EAST, panel_2, -10, SpringLayout.EAST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, -6, SpringLayout.NORTH, panel_2);
-		springLayout.putConstraint(SpringLayout.NORTH, panel_2, 460, SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, panel_2, -10, SpringLayout.SOUTH, frame.getContentPane());
 		SpringLayout sl_panel_1 = new SpringLayout();
 		panel_1.setLayout(sl_panel_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("SCREEN");
+		lblNewLabel_3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 18));
+		sl_panel_1.putConstraint(SpringLayout.EAST, lblNewLabel_3, 530, SpringLayout.WEST, panel_1);
 		lblNewLabel_3.setBackground(Color.WHITE);
 		sl_panel_1.putConstraint(SpringLayout.NORTH, lblNewLabel_3, 10, SpringLayout.NORTH, panel_1);
 		sl_panel_1.putConstraint(SpringLayout.WEST, lblNewLabel_3, 93, SpringLayout.WEST, panel_1);
 		sl_panel_1.putConstraint(SpringLayout.SOUTH, lblNewLabel_3, -379, SpringLayout.SOUTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.EAST, lblNewLabel_3, 449, SpringLayout.WEST, panel_1);
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblNewLabel_3);
 		
 		JPanel panel_3 = new JPanel();
 		sl_panel_1.putConstraint(SpringLayout.NORTH, panel_3, 6, SpringLayout.SOUTH, lblNewLabel_3);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, panel_3, -10, SpringLayout.SOUTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.WEST, panel_3, 10, SpringLayout.WEST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.WEST, panel_3, 64, SpringLayout.WEST, panel_1);
 		sl_panel_1.putConstraint(SpringLayout.EAST, panel_3, 555, SpringLayout.WEST, panel_1);
 		panel_1.add(panel_3);
 		panel_3.setLayout(new GridLayout(5, 6, 0, 0));
+		
+		JLabel lblNewLabel_6 = new JLabel("A");
+		sl_panel_1.putConstraint(SpringLayout.NORTH, lblNewLabel_6, 167, SpringLayout.NORTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.EAST, lblNewLabel_6, -17, SpringLayout.WEST, panel_3);
+		lblNewLabel_6.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
+		panel_1.add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_7 = new JLabel("B");
+		sl_panel_1.putConstraint(SpringLayout.WEST, lblNewLabel_7, 25, SpringLayout.WEST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.EAST, lblNewLabel_7, -17, SpringLayout.WEST, panel_3);
+		sl_panel_1.putConstraint(SpringLayout.WEST, lblNewLabel_6, 0, SpringLayout.WEST, lblNewLabel_7);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, lblNewLabel_6, -46, SpringLayout.NORTH, lblNewLabel_7);
+		lblNewLabel_7.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
+		panel_1.add(lblNewLabel_7);
+		
+		JLabel lblNewLabel_8 = new JLabel("C");
+		sl_panel_1.putConstraint(SpringLayout.WEST, lblNewLabel_8, 25, SpringLayout.WEST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.EAST, lblNewLabel_8, -17, SpringLayout.WEST, panel_3);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, lblNewLabel_7, -42, SpringLayout.NORTH, lblNewLabel_8);
+		lblNewLabel_8.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
+		panel_1.add(lblNewLabel_8);
+		
+		JLabel lblNewLabel_9 = new JLabel("D");
+		sl_panel_1.putConstraint(SpringLayout.WEST, lblNewLabel_9, 25, SpringLayout.WEST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.EAST, lblNewLabel_9, -12, SpringLayout.WEST, panel_3);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, lblNewLabel_8, -34, SpringLayout.NORTH, lblNewLabel_9);
+		lblNewLabel_9.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
+		panel_1.add(lblNewLabel_9);
+		
+		JLabel lblNewLabel_10 = new JLabel("E");
+		sl_panel_1.putConstraint(SpringLayout.WEST, lblNewLabel_10, 25, SpringLayout.WEST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.EAST, lblNewLabel_10, -12, SpringLayout.WEST, panel_3);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, lblNewLabel_9, -37, SpringLayout.NORTH, lblNewLabel_10);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, lblNewLabel_10, -86, SpringLayout.SOUTH, panel_1);
+		lblNewLabel_10.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
+		panel_1.add(lblNewLabel_10);
+		
+		JLabel lblNewLabel_11 = new JLabel("1            2            3            4            5            6");
+		sl_panel_1.putConstraint(SpringLayout.NORTH, lblNewLabel_11, 469, SpringLayout.NORTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, panel_3, -6, SpringLayout.NORTH, lblNewLabel_11);
+		sl_panel_1.putConstraint(SpringLayout.WEST, lblNewLabel_11, 104, SpringLayout.WEST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.EAST, lblNewLabel_11, 0, SpringLayout.EAST, panel_3);
+		lblNewLabel_11.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
+		panel_1.add(lblNewLabel_11);
 		
 		//JButton »ý¼º
 		buttons = new JButton[5][6];
@@ -160,31 +198,31 @@ public class MVSeatView {
 		panel.setLayout(sl_panel);
 		
 		JLabel lblNewLabel = new JLabel("\uCCAD\uC18C\uB144");
+		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel, 76, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel, -283, SpringLayout.SOUTH, panel);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("\uC131\uC778");
-		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_1, 76, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_1, 0, SpringLayout.WEST, lblNewLabel);
 		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel_1, -81, SpringLayout.EAST, panel);
-		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel, 0, SpringLayout.WEST, lblNewLabel_1);
-		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel_1, -341, SpringLayout.SOUTH, panel);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("\uC5B4\uB9B0\uC774");
-		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel_2, -185, SpringLayout.SOUTH, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel_2, -200, SpringLayout.SOUTH, panel);
 		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel_2, 0, SpringLayout.EAST, lblNewLabel);
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel_2);
 		
 		//comboBox »ý¼º
 		JComboBox comboBox = new JComboBox();
+		sl_panel.putConstraint(SpringLayout.NORTH, comboBox, 162, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel_1, -6, SpringLayout.NORTH, comboBox);
+		sl_panel.putConstraint(SpringLayout.WEST, comboBox, 68, SpringLayout.WEST, panel);
 		comboBox.addMouseListener(new MouseAdapter() {
 		
 		});
-		sl_panel.putConstraint(SpringLayout.WEST, comboBox, 68, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel, 33, SpringLayout.SOUTH, comboBox);
-		sl_panel.putConstraint(SpringLayout.NORTH, comboBox, 6, SpringLayout.SOUTH, lblNewLabel_1);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"0\uBA85", "1\uBA85", "2\uBA85", "3\uBA85", "4\uBA85", "5\uBA85", "6\uBA85"}));
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -196,7 +234,6 @@ public class MVSeatView {
 		panel.add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		
 		sl_panel.putConstraint(SpringLayout.NORTH, comboBox_1, 6, SpringLayout.SOUTH, lblNewLabel);
 		sl_panel.putConstraint(SpringLayout.EAST, comboBox_1, 0, SpringLayout.EAST, lblNewLabel);
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"0\uBA85", "1\uBA85", "2\uBA85", "3\uBA85", "4\uBA85", "5\uBA85", "6\uBA85"}));
@@ -210,7 +247,6 @@ public class MVSeatView {
 		panel.add(comboBox_1);
 		
 		JComboBox comboBox_2 = new JComboBox();
-		
 		sl_panel.putConstraint(SpringLayout.NORTH, comboBox_2, 6, SpringLayout.SOUTH, lblNewLabel_2);
 		sl_panel.putConstraint(SpringLayout.EAST, comboBox_2, 0, SpringLayout.EAST, lblNewLabel);
 		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"0\uBA85", "1\uBA85", "2\uBA85", "3\uBA85", "4\uBA85", "5\uBA85", "6\uBA85"}));
@@ -222,16 +258,11 @@ public class MVSeatView {
 			}
 		});
 		panel.add(comboBox_2);
-		frame.getContentPane().add(panel_2);
-		SpringLayout sl_panel_2 = new SpringLayout();
-		panel_2.setLayout(sl_panel_2);
 		
 		JButton btnNewButton_30 = new JButton("\uACB0\uC81C\uD558\uAE30");
+		sl_panel.putConstraint(SpringLayout.SOUTH, btnNewButton_30, -28, SpringLayout.SOUTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, btnNewButton_30, -55, SpringLayout.EAST, panel);
 		btnNewButton_30.setBackground(Color.WHITE);
-		sl_panel_2.putConstraint(SpringLayout.NORTH, btnNewButton_30, 23, SpringLayout.NORTH, panel_2);
-		sl_panel_2.putConstraint(SpringLayout.WEST, btnNewButton_30, 313, SpringLayout.WEST, panel_2);
-		sl_panel_2.putConstraint(SpringLayout.SOUTH, btnNewButton_30, -10, SpringLayout.SOUTH, panel_2);
-		sl_panel_2.putConstraint(SpringLayout.EAST, btnNewButton_30, -102, SpringLayout.EAST, panel_2);
 		btnNewButton_30.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -253,26 +284,16 @@ public class MVSeatView {
 //				pay.totalPrice = 12000;
 			}
 		});
-		panel_2.add(btnNewButton_30);
+		panel.add(btnNewButton_30);
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(Color.WHITE);
-		sl_panel_2.putConstraint(SpringLayout.NORTH, panel_4, 23, SpringLayout.NORTH, panel_2);
-		sl_panel_2.putConstraint(SpringLayout.WEST, panel_4, 146, SpringLayout.WEST, panel_2);
-		sl_panel_2.putConstraint(SpringLayout.SOUTH, panel_4, 0, SpringLayout.SOUTH, btnNewButton_30);
-		sl_panel_2.putConstraint(SpringLayout.EAST, panel_4, -17, SpringLayout.WEST, btnNewButton_30);
-		panel_2.add(panel_4);
-		SpringLayout sl_panel_4 = new SpringLayout();
-		panel_4.setLayout(sl_panel_4);
-		
-		JLabel lblNewLabel_4 = new JLabel("\uB0A8\uC740 \uC88C\uC11D \uC218");
-		sl_panel_4.putConstraint(SpringLayout.WEST, lblNewLabel_4, 10, SpringLayout.WEST, panel_4);
-		sl_panel_4.putConstraint(SpringLayout.SOUTH, lblNewLabel_4, -10, SpringLayout.SOUTH, panel_4);
-		panel_4.add(lblNewLabel_4);
+		JLabel lblNewLabel_4 = new JLabel("\uB0A8\uC740 \uC790\uC11D");
+		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_4, 0, SpringLayout.WEST, comboBox);
+		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel_4, -101, SpringLayout.SOUTH, panel);
+		panel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("New label");
-		sl_panel_4.putConstraint(SpringLayout.NORTH, lblNewLabel_5, 0, SpringLayout.NORTH, lblNewLabel_4);
-		sl_panel_4.putConstraint(SpringLayout.WEST, lblNewLabel_5, 5, SpringLayout.EAST, lblNewLabel_4);
-		panel_4.add(lblNewLabel_5);
+		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel_5, 6, SpringLayout.SOUTH, lblNewLabel_4);
+		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel_5, 0, SpringLayout.WEST, comboBox);
+		panel.add(lblNewLabel_5);
 	}
 }

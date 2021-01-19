@@ -309,7 +309,7 @@ public class MVRvView {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				MVSeatView.main(movieNm, time);
-
+				
 				frame.dispose();
 			}
 		});
