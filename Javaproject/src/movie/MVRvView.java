@@ -108,7 +108,15 @@ public int user_Uid;
       
       ImageIcon img2 = new ImageIcon("imgs/ti_s.png");
       
-      JButton btn_r1 = new JButton("New button");
+      
+      
+      ImageIcon btn5 = new ImageIcon("imgs/btn1.png");
+      JButton btn_r1 = new JButton(btn5);
+      btn_r1.setBorderPainted(false);
+      btn_r1.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) {
+      	}
+      });
       sl_fir_panel.putConstraint(SpringLayout.WEST, btn_r1, 579, SpringLayout.WEST, first_panel);
       sl_fir_panel.putConstraint(SpringLayout.EAST, btn_r1, -10, SpringLayout.EAST, first_panel);
       btn_r1.addMouseListener(new MouseAdapter() {
@@ -121,6 +129,11 @@ public int user_Uid;
       
       ImageIcon btn4 = new ImageIcon("imgs/btn2.png");
       JButton btn_l1 = new JButton(btn4);
+      btn_l1.setBorderPainted(false);
+      btn_l1.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) {
+      	}
+      });
       sl_fir_panel.putConstraint(SpringLayout.WEST, btn_l1, 10, SpringLayout.WEST, first_panel);
       sl_fir_panel.putConstraint(SpringLayout.SOUTH, btn_l1, -278, SpringLayout.SOUTH, first_panel);
       sl_fir_panel.putConstraint(SpringLayout.EAST, btn_l1, 46, SpringLayout.WEST, first_panel);
@@ -328,9 +341,10 @@ public int user_Uid;
       
       ImageIcon btn2 = new ImageIcon("imgs/btn2.png");
       JButton btn_l2 = new JButton(btn2);
+      sl_sec_panel.putConstraint(SpringLayout.SOUTH, btn_l2, -279, SpringLayout.SOUTH, second_panel);
+      sl_sec_panel.putConstraint(SpringLayout.EAST, btn_l2, -582, SpringLayout.EAST, second_panel);
+      btn_l2.setBorderPainted(false);
       sl_sec_panel.putConstraint(SpringLayout.WEST, btn_l2, 10, SpringLayout.WEST, second_panel);
-      sl_sec_panel.putConstraint(SpringLayout.SOUTH, btn_l2, -273, SpringLayout.SOUTH, second_panel);
-      sl_sec_panel.putConstraint(SpringLayout.EAST, btn_l2, -579, SpringLayout.EAST, second_panel);
       btn_l2.addMouseListener(new MouseAdapter() {
       	@Override
       	public void mouseClicked(MouseEvent e) {
@@ -343,8 +357,16 @@ public int user_Uid;
       });
       second_panel.add(btn_l2);
       
-      JButton btn_r2 = new JButton("New button");
-      sl_sec_panel.putConstraint(SpringLayout.WEST, btn_r2, -48, SpringLayout.EAST, second_panel);
+      
+      ImageIcon btn6 = new ImageIcon("imgs/btn1.png");
+      JButton btn_r2 = new JButton(btn6);
+      sl_sec_panel.putConstraint(SpringLayout.SOUTH, btn_r2, 0, SpringLayout.SOUTH, btn_l2);
+      btn_r2.setBorderPainted(false);
+      btn_r2.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) {
+      	}
+      });
+      sl_sec_panel.putConstraint(SpringLayout.WEST, btn_r2, -45, SpringLayout.EAST, second_panel);
       btn_r2.addMouseListener(new MouseAdapter() {
       	@Override
       	public void mouseClicked(MouseEvent e) {
@@ -354,7 +376,6 @@ public int user_Uid;
       
       JButton btn_Mp = new JButton("\uB9C8\uC774\uD398\uC774\uC9C0");
       sl_sec_panel.putConstraint(SpringLayout.NORTH, btn_r2, 221, SpringLayout.SOUTH, btn_Mp);
-      sl_sec_panel.putConstraint(SpringLayout.SOUTH, btn_r2, 257, SpringLayout.SOUTH, btn_Mp);
       sl_sec_panel.putConstraint(SpringLayout.EAST, btn_r2, 0, SpringLayout.EAST, btn_Mp);
       sl_sec_panel.putConstraint(SpringLayout.SOUTH, btn_Mp, -530, SpringLayout.SOUTH, second_panel);
       btn_Mp.setBackground(Color.WHITE);
@@ -399,7 +420,7 @@ public int user_Uid;
 				super.paintComponent(g);
 			}
 		};
-      sl_sec_panel.putConstraint(SpringLayout.WEST, JP_m, 17, SpringLayout.EAST, btn_l2);
+      sl_sec_panel.putConstraint(SpringLayout.WEST, JP_m, 20, SpringLayout.EAST, btn_l2);
       sl_sec_panel.putConstraint(SpringLayout.SOUTH, JP_m, -2, SpringLayout.NORTH, btnNewButton);
       second_panel.add(JP_m);
       
