@@ -9,6 +9,7 @@ import javax.swing.SpringLayout;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -314,9 +315,20 @@ public class MVRvView {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				MVSeatView.main(movieNm, time,user_Uid);
 
-				frame.dispose();
+
+				
+
+				if(Ch1.isSelected() == true || Ch2.isSelected() == true || Ch3.isSelected() == true || 
+						   Ch4.isSelected() == true || Ch5.isSelected() == true || Ch6.isSelected() == true) {
+							
+							MVSeatView.main(movieNm, time,user_Uid);
+							frame.dispose();
+						}else {
+							JOptionPane.showMessageDialog(null, "체크박스를 눌러주세요!");
+						}
+
+			
 			}
 		});
 		panel_1.add(btnNewButton_1);
