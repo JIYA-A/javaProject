@@ -65,7 +65,7 @@ public class SeatDAO {
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, vo.getSeatName());
-			pst.setString(2, vo.getIsSeatRsv());
+			pst.setInt(2, vo.getIsSeatRsv());
 			pst.setInt(3, vo.getMovieUid());
 
 			pst.executeUpdate(); // sql문장 실행
@@ -78,7 +78,7 @@ public class SeatDAO {
 
 	}
 
-	public ArrayList<SeatVO> selectSeatAll() {
+	public ArrayList<SeatVO> selectSeatAll(String seatName, int movieuid) {
 		ArrayList<SeatVO> list = new ArrayList<SeatVO>();
 
 		try {
@@ -88,15 +88,17 @@ public class SeatDAO {
 			// *BookDAO의 selectBookAll()메소드 참고
 
 			// 3.DB에 보낼 Query 작성
-			String sql = "select * from pay";
+			String sql = "select * from seat where seatName = ?and movie_Uid =?";
 			pst = conn.prepareStatement(sql);
-
+			 pst.setString(1, seatName);
+			 pst.setInt(2,movieuid);
+			
 			rs = pst.executeQuery();
 
 			while (rs.next()) {
 				int getSeatUid = rs.getInt(1);
 				String getSeatName = rs.getString(2);
-				String getIsSeatRsv = rs.getString(3);
+				int getIsSeatRsv = rs.getInt(3);
 				int getMovieUid = rs.getInt(5);
 
 				list.add(new SeatVO(getSeatUid, getSeatName, getIsSeatRsv, getMovieUid));
@@ -144,10 +146,11 @@ public class SeatDAO {
 			return "";
 		}
 	}
+	
 
 	
 
-	public void deleteSeat(int selectSeatUid) {
+	public void deleteSeat (int selectSeatUid) {
 		try {
 
 			connection();
@@ -166,5 +169,49 @@ public class SeatDAO {
 			close();
 		} // end try~catch!finally
 	}
+
+	public void seatRvChange(String seat_name, int movie_Uid) {
+		try {
+
+			connection();
+
+			// 3. DB에 보낼 Query문 작성
+			String sql = "update seat set isSeatRsv = 1 where seatName = ?and movie_Uid =?";
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, seat_name);
+			pst.setInt(2, movie_Uid);
+			// 4. Query 실행
+			pst.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		} // end try~catch!finally
+		
+	}
+
+	public void seatRvRechange(String seat_name, int movie_Uid) {
+		try {
+
+			connection();
+
+			// 3. DB에 보낼 Query문 작성
+			String sql = "update seat set isSeatRsv = 0 where seatName = ?and movie_Uid =?";
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, seat_name);
+			pst.setInt(2, movie_Uid);
+			// 4. Query 실행
+			pst.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		} // end try~catch!finally
+		
+	}
+
+	
 
 }

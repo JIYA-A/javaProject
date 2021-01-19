@@ -1,26 +1,25 @@
 package movie;
 
+import java.awt.Color;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.SpringLayout;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
-import javax.swing.JComboBox;
+import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.util.ArrayList;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.Color;
-import java.awt.Font;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SpringLayout;
+import javax.swing.SwingConstants;
 
 public class MVSeatView {
 
@@ -32,7 +31,11 @@ public class MVSeatView {
 	public int totalPrice;
 	public int user_Uid;
 	public int seat_Uid;
+	private int seatrv;
 
+	private String seat_name;
+	
+	private int movie_Uid;
 	private int num;
 	private int count = 0;
 	private int value1 = 0;
@@ -61,6 +64,7 @@ public class MVSeatView {
 
 	private void initialize() {
 		SeatDAO dao = new SeatDAO();
+		SeatVO vo = new SeatVO();
 		frame = new JFrame();
 
 		frame.getContentPane().setBackground(new Color(153, 204, 255));
@@ -163,7 +167,51 @@ public class MVSeatView {
 			for (int j = 0; j < buttons[i].length; j++) {
 				final int row = i;
 				final int col = j;
-		
+
+				String row_1 = dao.one(row);
+				seat_name = row_1 + col;
+				switch (movieNm) {
+				case "명량":
+					if (time == "9:30") {
+
+						movie_Uid = 1;
+						break;
+					} else if (time == "13:30") {
+						movie_Uid = 2;
+						break;
+					}
+
+				case "극한직업":
+					if (time == "10:30") {
+
+						movie_Uid = 3;
+						break;
+					} else if (time == "14:30") {
+						movie_Uid = 4;
+						break;
+					}
+				case "신과함께-죄와벌":
+					if (time == "11:00") {
+
+						movie_Uid = 5;
+						break;
+					} else if (time == "12:30") {
+						movie_Uid = 6;
+						break;
+					}
+
+				default:
+					break;
+				}
+				//time과 자리로 seatUid를 가져오기
+				
+				ArrayList<SeatVO> seats =dao.selectSeatAll(seat_name,movie_Uid);
+				
+				
+					seat_Uid = seats.get(1).getSeatUid();
+					seatrv = seats.get(1).getIsSeatRsv();
+				
+				
 				ImageIcon seat_icon = new ImageIcon("imgs/sseat.jpg");
 				ImageIcon seatrv_icon = new ImageIcon("imgs/ssseat.jpg");
 				buttons[i][j] = new JButton(seat_icon); // 이미지
@@ -171,71 +219,21 @@ public class MVSeatView {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						System.out.println(row + "," + col);
-						switch (movieNm) {
-						case "명량":
-							switch (time) {
-							case "9:30":
-								switch (row) {
-								case 0:
-									switch (col) {
-									case 1:
-										
-										break;
 
-									default:
-										break;
-									}
-
-									break;
-								case 1:
-
-									break;
-								case 2:
-
-									break;
-								case 3:
-
-									break;
-								case 4:
-
-									break;
-								case 5:
-
-									break;
-
-								default:
-									break;
-								}
-
-								break;
-							case "13:30":
-
-								break;
-
-							default:
-								break;
-							}
-							break;
-						case "극한직업":
-							break;
-						case "신과함께-죄와벌":
-							break;
-						default:
-							break;
-						}
 						// type이 boolean이면 앞에 !을 붙이면 해당 값의 반대라는 의미 true면 false, false면 true 일종의 스위치 처럼
 						// 작동함
-						buttonCheck[row][col] = !buttonCheck[row][col];
 
-						System.out.println(buttonCheck[row][col]);
-						if (buttonCheck[row][col]) {
+						if (seatrv == 0) {
 							// 색깔 바꿈 ON
 							buttons[row][col].setIcon(seatrv_icon);
 							count++;
+							dao.seatRvChange(seat_name,movie_Uid);
 						} else {
 							// 색깔 바꿈 OFF
 							buttons[row][col].setIcon(seat_icon);
 							count--;
+							dao.seatRvRechange(seat_name,movie_Uid);
+
 						}
 					}
 				});

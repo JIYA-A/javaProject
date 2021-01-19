@@ -57,7 +57,7 @@ public class MovieDAO {
 
 	}
 	
-	public ArrayList<MovieVO> selectBookAll() {
+	public ArrayList<MovieVO> selectmovieall() {
 	      ArrayList<MovieVO> list = new ArrayList<MovieVO>();
 	      //DB연결기능
 	      

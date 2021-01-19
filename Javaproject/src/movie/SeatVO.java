@@ -2,11 +2,16 @@ package movie;
 
 public class SeatVO {
 
+	public SeatVO() {
+		super();
+	}
+	
 	private int seatUid;
 	private String seatName;
-	private String isSeatRsv;
+	private int isSeatRsv;
 	private int movieUid;
-	public SeatVO(int seatUid, String seatName, String isSeatRsv, int movieUid) {
+	
+	public SeatVO(int seatUid, String seatName, int isSeatRsv, int movieUid) {
 		super();
 		this.seatUid = seatUid;
 		this.seatName = seatName;
@@ -19,7 +24,7 @@ public class SeatVO {
 	public String getSeatName() {
 		return seatName;
 	}
-	public String getIsSeatRsv() {
+	public int getIsSeatRsv() {
 		return isSeatRsv;
 	}
 	public int getMovieUid() {
@@ -31,7 +36,7 @@ public class SeatVO {
 	public void setSeatName(String seatName) {
 		this.seatName = seatName;
 	}
-	public void setIsSeatRsv(String isSeatRsv) {
+	public void setIsSeatRsv(int isSeatRsv) {
 		this.isSeatRsv = isSeatRsv;
 	}
 	public void setMovieUid(int movieUid) {

@@ -11,6 +11,7 @@ add constraint seat_movieUid_fk foreign key
 
 create sequence seat_UId start with 1 increment by 1;
 
+;
 
 
 alter table seat 

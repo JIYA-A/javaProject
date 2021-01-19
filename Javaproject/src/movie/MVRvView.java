@@ -33,6 +33,7 @@ public class MVRvView {
 	public String movieNm;
 	public String time;
 	public int user_Uid;
+	public int movie_Uid;
 
 	public static void main(int user_Uid) {
 		EventQueue.invokeLater(new Runnable() {
@@ -57,7 +58,7 @@ public class MVRvView {
 		initialize();
 	}
 	private void initialize() {
-
+		MovieDAO dao = new MovieDAO();
 		frame = new JFrame();
 
 		frame.getContentPane().setBackground(new Color(153, 204, 255));
@@ -138,10 +139,10 @@ public class MVRvView {
 		Ch2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
+				//MovieVO movies = new dao.selectmovieall();
 				movieNm = "명량";
 				time = "오전 09:30";
-
+				//movie_Uid = dao.
 				Ch1.setSelected(false);
 				Ch3.setSelected(false);
 				Ch4.setSelected(false);
