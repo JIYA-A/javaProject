@@ -25,7 +25,7 @@ import javax.swing.Icon;
 import java.awt.Font;
 
 public class MVRvView {
-
+	//¾î¤¿¾î¤¿¸®
    private JFrame frame;
    private CardLayout cardLayout;
    private JPanel first_panel, second_panel;
