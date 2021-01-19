@@ -265,7 +265,8 @@ public class MVPayView {
 				// DB저장하기하기기
 				
 				String cardNumber = textCardNumber.getText();
-				dao.addPay(new PayVO(totalPrice, cardNumber, movieNm));
+				
+				dao.addPay(new PayVO(totalPrice, cardNumber, movieNm,user_Uid));
 				
 				// 예매하기 창으로 돌아가기
 				new MVRvView().main(user_Uid);	

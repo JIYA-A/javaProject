@@ -7,19 +7,37 @@ public class PayVO {
 	private String payDate;
 	private String cardNumber;
 	private String movieName;
+	int user_Uid;
 	
-	public PayVO(String movieName, String payDate, int totalPrice) {
+	public int getUser_Uid() {
+		return user_Uid;
+	}
+
+	public void setUser_Uid(int user_Uid) {
+		this.user_Uid = user_Uid;
+	}
+
+	public PayVO( String movieName,String payDate ,int totalPrice) {
 		super();
 		this.totalPrice = totalPrice;
 		this.payDate = payDate;
 		this.movieName = movieName;
 	}
 
-	public PayVO(int totalPrice, String cardNumber, String movieName) {
+	public PayVO(String movieName, String payDate, int totalPrice, int user_Uid) {
+		super();
+		this.totalPrice = totalPrice;
+		this.payDate = payDate;
+		this.movieName = movieName;
+		this.user_Uid = user_Uid;
+	}
+
+	public PayVO(int totalPrice, String cardNumber, String movieName, int user_Uid) {
 		super();
 		this.totalPrice = totalPrice;
 		this.cardNumber = cardNumber;
 		this.movieName = movieName;
+		this.user_Uid = user_Uid;
 	}
 
 	public PayVO(int totalPrice, String payDate, String cardNumber, String movieName) {

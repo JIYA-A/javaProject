@@ -63,12 +63,13 @@ public class PayDAO {
 
 		connection(); // DB연결
 
-		String sql = "insert into pay values(pay_Uid.nextval,?,sysdate,?,?)";
+		String sql = "insert into pay values(pay_Uid.nextval,?,sysdate,?,?,?)";
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setInt(1, vo.getTotalPrice());
 			pst.setString(2, vo.getCardNumber());
 			pst.setString(3, vo.getMovieName());
+			pst.setInt(4, vo.getUser_Uid());
 			
 
 			pst.executeUpdate(); // sql문장 실행
@@ -100,6 +101,7 @@ public class PayDAO {
 				String getMovieName = rs.getString(1);
 				String getPayDate = rs.getString(2);
 				int getTotalPrice = rs.getInt(3);
+			
 				
 				
 

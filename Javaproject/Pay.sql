@@ -32,6 +32,8 @@ add constraint pay_seatUid_fk foreign key
 
 
 
+
+
 alter table pay add cardNumber varchar2(40) null;
 
 create sequence pay_UId start with 1 increment by 1;
