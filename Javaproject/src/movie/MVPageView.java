@@ -119,7 +119,7 @@ public class MVPageView {
 		springLayout.putConstraint(SpringLayout.WEST, panel_1, 48, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, 56, SpringLayout.SOUTH, scrollPane);
 		
-		rv_table = new JTable();
+		rv_table = new JTable(model);
 		scrollPane.setViewportView(rv_table);
 		
 		springLayout.putConstraint(SpringLayout.EAST, panel_1, 381, SpringLayout.WEST, frame.getContentPane());
