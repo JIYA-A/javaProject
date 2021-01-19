@@ -23,17 +23,21 @@ import java.nio.file.ClosedDirectoryStreamException;
 
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
+
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
 public class MVRvView {
 
-	private JFrame frame;
-	public String movieNm;
-	public String time;
-	public int user_Uid;
-	public int movie_Uid;
+	//¾î¤¿¾î¤¿¸®
+   private JFrame frame;
+   private CardLayout cardLayout;
+   private JPanel first_panel, second_panel;
+   public String movieNm;
+   public String time;
+public int user_Uid;
 
 	public static void main(int user_Uid) {
 		EventQueue.invokeLater(new Runnable() {
