@@ -19,6 +19,7 @@ public class MVRoginView{
 	private JFrame frame;
 	private JTextField text_password;
 	private JTextField text_id;
+	public int user_Uid;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -96,7 +97,9 @@ public class MVRoginView{
 				}else {
 					if(vo.getUserUid() != 0) {
 						JOptionPane.showMessageDialog(null, "Login Successful");
-						new MVRvView().main(null);
+						user_Uid = vo.getUserUid();
+						System.out.println(user_Uid);
+						new MVRvView().main(user_Uid);
 						panel.setVisible(false); // 로그인 성공시 더이상 로그인 패널이 보이지 않음
 						frame.dispose();
 					}else {

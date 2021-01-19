@@ -42,16 +42,17 @@ public class MVPayView {
 	public String movieNm;
 	public String time;
 	public int totalPrice;
-
+	public int user_Uid;
+	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String movieNm, String time, int totalPrice) {
+	public static void main(String movieNm, String time, int totalPrice, int user_Uid) {
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MVPayView window = new MVPayView(movieNm, time, totalPrice);
+					MVPayView window = new MVPayView(movieNm, time, totalPrice,user_Uid);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -67,11 +68,11 @@ public class MVPayView {
 		initialize();
 	}
 	
-	public MVPayView(String movieNm, String time, int totalPrice) {
+	public MVPayView(String movieNm, String time, int totalPrice, int user_Uid) {
 		this.movieNm = movieNm;
 		this.time = time;
 		this.totalPrice = totalPrice;
-
+		this.user_Uid = user_Uid;
 		initialize();
 	}
 
@@ -267,7 +268,7 @@ public class MVPayView {
 				dao.addPay(new PayVO(totalPrice, cardNumber, movieNm));
 				
 				// 예매하기 창으로 돌아가기
-				new MVRvView().main(null);	
+				new MVRvView().main(user_Uid);	
 				frame.dispose();
 			}
 		});

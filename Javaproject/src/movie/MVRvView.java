@@ -9,7 +9,6 @@ import javax.swing.SpringLayout;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -30,15 +29,15 @@ import javax.swing.SwingConstants;
 public class MVRvView {
 
 	private JFrame frame;
-	private JCheckBox jc;
 	public String movieNm;
 	public String time;
+	public int user_Uid;
 
-	public static void main(String[] args) {
+	public static void main(int user_Uid) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MVRvView window = new MVRvView();
+					MVRvView window = new MVRvView(user_Uid);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +49,12 @@ public class MVRvView {
 	public MVRvView() {
 		initialize();
 	}
-
+	
+	public MVRvView(int user_Uid) {
+		this.user_Uid = user_Uid;
+		
+		initialize();
+	}
 	private void initialize() {
 
 		frame = new JFrame();
@@ -287,30 +291,18 @@ public class MVRvView {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				MVPageView.main(null);
+				new MVPageView().main(user_Uid);
 
 				frame.dispose();
-				
-				
-				
-//				if(JCheckBox. == false) {
-//					JOptionPane.showMessageDialog(null, "체크박스를 눌러주세요!");
-//				}else {
-//					new MVPageView().main(null);
-//					
-//					frame.dispose();
-//				}
-				
 			}
 		});
 		sl_panel_1.putConstraint(SpringLayout.NORTH, btnNewButton, 28, SpringLayout.NORTH, panel_1);
 		panel_1.add(btnNewButton);
 		
-		JButton btn_MVgo = new JButton("\uC601\uD654\uC608\uB9E4");
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, panel_3, -29, SpringLayout.NORTH, btn_MVgo);
-		sl_panel_1.putConstraint(SpringLayout.WEST, btn_MVgo, 294, SpringLayout.WEST, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, btn_MVgo, -10, SpringLayout.SOUTH, panel_1);
+		JButton btnNewButton_1 = new JButton("\uC601\uD654\uC608\uB9E4");
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, panel_3, -29, SpringLayout.NORTH, btnNewButton_1);
+		sl_panel_1.putConstraint(SpringLayout.WEST, btnNewButton_1, 294, SpringLayout.WEST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, btnNewButton_1, -10, SpringLayout.SOUTH, panel_1);
 		
 		
 		
@@ -318,21 +310,16 @@ public class MVRvView {
 		ImageIcon movie_g_icon = new ImageIcon("imgs/mo_g.jpg");
 		
 		
-		btn_MVgo.setBackground(Color.WHITE);
-		btn_MVgo.addMouseListener(new MouseAdapter() {
+		btnNewButton_1.setBackground(Color.WHITE);
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(Ch1.isSelected() == true || Ch2.isSelected() == true || Ch3.isSelected() == true || 
-						   Ch4.isSelected() == true || Ch5.isSelected() == true || Ch6.isSelected() == true) {
-							
-							MVSeatView.main(movieNm, time);
-							frame.dispose();
-						}else {
-							JOptionPane.showMessageDialog(null, "체크박스를 눌러주세요!");
-						}
+				MVSeatView.main(movieNm, time,user_Uid);
+
+				frame.dispose();
 			}
 		});
-		panel_1.add(btn_MVgo);
+		panel_1.add(btnNewButton_1);
 		
 		ImageIcon mmovie_icon = new ImageIcon("imgs/mmovie.png");
 		JLabel lblNewLabel = new JLabel(mmovie_icon);

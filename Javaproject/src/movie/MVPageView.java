@@ -31,13 +31,13 @@ public class MVPageView {
 	private DefaultTableModel model; //JTable 데이터 추가, 삭제
 	private int row; //선택한 행의 위치
 	private JTable rv_table;
+	public int user_Uid;
 	
-	
-	public static void main(String[] args) {
+	public static void main(int user_Uid) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MVPageView window = new MVPageView();
+					MVPageView window = new MVPageView(user_Uid);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +50,11 @@ public class MVPageView {
 	public MVPageView() {
 		initialize();
 	}
-
+	public MVPageView(int user_Uid) {
+		this.user_Uid = user_Uid;
+		
+		initialize();
+	}
 	
 	private void initialize() {
 		PayDAO dao = new PayDAO();
@@ -150,7 +154,7 @@ public class MVPageView {
 		btnreturn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new MVRvView().main(null);	
+				new MVRvView().main(user_Uid);	
 			frame.dispose();
 			}
 		});

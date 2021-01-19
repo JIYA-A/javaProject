@@ -29,6 +29,7 @@ public class MVSeatView {
 	public String movieNm;
 	public String time;
 	public int totalPrice;
+	public int user_Uid;
 	
 	private int num;
 	private int count =0;
@@ -36,11 +37,11 @@ public class MVSeatView {
 	private int value2 = 0;
 	private int value3 = 0;
 	
-	public static void main(String movieNm, String time) {
+	public static void main(String movieNm, String time, int user_Uid) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MVSeatView window = new MVSeatView(movieNm, time);
+					MVSeatView window = new MVSeatView(movieNm, time, user_Uid);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,9 +51,10 @@ public class MVSeatView {
 	}
 
 	
-	public MVSeatView(String movieNm, String time) {
+	public MVSeatView(String movieNm, String time, int user_Uid ) {
 		this.movieNm = movieNm;
 		this.time = time;
+		this.user_Uid = user_Uid;
 		initialize();
 	}
 
@@ -240,7 +242,7 @@ public class MVSeatView {
 				System.out.println("합계 : "+sum);
 				totalPrice = value1*10000+value2*8000+value3*5000;
 				if (sum == count) {
-					new MVPayView().main(movieNm, time, totalPrice);					
+					new MVPayView().main(movieNm, time, totalPrice,user_Uid);					
 					frame.dispose();
 				}else if(count>sum){
 					JOptionPane.showMessageDialog(null, "선택한 인원보다 많습니다.", "", JOptionPane.PLAIN_MESSAGE);
