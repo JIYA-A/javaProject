@@ -328,7 +328,7 @@ public class MVSeatView {
 				System.out.println("합계 : " + sum);
 				totalPrice = value1 * 10000 + value2 * 8000 + value3 * 5000;
 				if (sum == count) {
-					new MVPayView().main(movieNm, time, totalPrice, user_Uid);
+					MVPayView.main(movieNm, time, totalPrice, user_Uid);
 					frame.dispose();
 				} else if (count > sum) {
 					JOptionPane.showMessageDialog(null, "선택한 인원보다 많습니다.", "", JOptionPane.PLAIN_MESSAGE);

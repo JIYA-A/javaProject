@@ -154,7 +154,7 @@ public class MVPageView {
 		btnreturn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new MVRvView().main(user_Uid);	
+				MVRvView.main(user_Uid);	
 			frame.dispose();
 			}
 		});
